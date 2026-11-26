@@ -784,103 +784,8 @@
         height: 195px;
         display: block;
       }
-      .demo-stage {
-        --c-leg: #4a5a74;
-        --c-torso: #6c7d98;
-        --c-arm: #a9b6cb;
-        --c-leg: color-mix(in srgb, var(--text) 34%, var(--bg));
-        --c-torso: color-mix(in srgb, var(--text) 52%, var(--bg));
-        --c-arm: color-mix(in srgb, var(--text) 76%, var(--bg));
-      }
-      .demo-stage svg {
-        height: 225px;
-      }
-      .phase-live {
-        min-height: 34px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 12.5px;
-        font-weight: 700;
-        padding: 0 6px;
-      }
-      .demo-stage [class^="anim-"] {
-        animation-duration: var(--dur, 2.4s) !important;
-      }
-      .demo-stage.slow {
-        --dur: 4.8s;
-      }
-      .phase-cap {
-        position: relative;
-        height: 36px;
-        margin-top: 2px;
-      }
-      .phase-cap span {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 12.5px;
-        font-weight: 700;
-        padding: 0 6px;
-        opacity: 0;
-        animation-duration: var(--dur, 2.4s);
-        animation-iteration-count: infinite;
-        animation-timing-function: step-end;
-      }
-      .phase-cap .pa {
-        animation-name: cap-a;
-        color: var(--acc);
-      }
-      .phase-cap .pb {
-        animation-name: cap-b;
-        color: var(--warn);
-      }
-      @keyframes cap-a {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-      @keyframes cap-b {
-        0% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      .cycle-bar {
-        height: 3px;
-        background: var(--s3);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .cycle-bar i {
-        display: block;
-        height: 100%;
-        background: var(--acc);
-        transform-origin: left;
-        animation: cyc var(--dur, 2.4s) linear infinite;
-      }
-      @keyframes cyc {
-        from {
-          transform: scaleX(0);
-        }
-        to {
-          transform: scaleX(1);
-        }
+      .demo-stage.slow * {
+        animation-duration: 4.4s !important;
       }
       .demo-phase {
         position: absolute;
@@ -980,7 +885,7 @@
           transform: translate(0px, 0px);
         }
         50% {
-          transform: translate(-24px, -16px);
+          transform: translate(-30px, 16px);
         }
       }
       @keyframes mv-pullover {
@@ -1199,6 +1104,68 @@
       .anim-pulse {
         animation: mv-pulse 2s ease-in-out infinite;
       }
+
+      /* Nouvelles animations de démonstration */
+      @keyframes mv-push {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(10px); }
+      }
+      @keyframes mv-pull {
+        0%, 100% { transform: translate(0px, 0px); }
+        50% { transform: translate(44px, 10px); }
+      }
+      @keyframes mv-rearl {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-62deg); }
+      }
+      @keyframes mv-skull {
+        0%, 100% { transform: translate(0px, 0px); }
+        50% { transform: translate(-34px, 20px); }
+      }
+      @keyframes mv-kick {
+        0%, 100% { transform: rotate(48deg); }
+        50% { transform: rotate(0deg); }
+      }
+      @keyframes mv-sway {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(4px); }
+      }
+      @keyframes mv-wipers {
+        0%, 100% { transform: rotate(38deg); }
+        50% { transform: rotate(-38deg); }
+      }
+      @keyframes mv-sidebend {
+        0%, 100% { transform: rotate(13deg); }
+        50% { transform: rotate(-13deg); }
+      }
+      @keyframes mv-sideplank {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes mv-phase-a {
+        0%, 46% { opacity: 1; }
+        54%, 100% { opacity: 0; }
+      }
+      @keyframes mv-phase-b {
+        0%, 46% { opacity: 0; }
+        54%, 100% { opacity: 1; }
+      }
+      .anim-push { animation: mv-push 2.2s ease-in-out infinite; }
+      .anim-pull { animation: mv-pull 2.2s ease-in-out infinite; }
+      .anim-rear-l, .anim-rear-r { animation: mv-rearl 2.3s ease-in-out infinite; }
+      .anim-skull { animation: mv-skull 2.2s ease-in-out infinite; }
+      .anim-kick { animation: mv-kick 2.2s ease-in-out infinite; }
+      .anim-sway { animation: mv-sway 2.4s ease-in-out infinite; }
+      .anim-wipers { animation: mv-wipers 2.6s ease-in-out infinite; }
+      .anim-sidebend { animation: mv-sidebend 2.8s ease-in-out infinite; }
+      .anim-sideplank { animation: mv-sideplank 2.4s ease-in-out infinite; }
+      .phase-a { animation: mv-phase-a 2.2s linear infinite; }
+      @keyframes mv-front {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-84deg); }
+      }
+      .anim-front { animation: mv-front 2.2s ease-in-out infinite; }
+      .phase-b { animation: mv-phase-b 2.2s linear infinite; }
 
       .toast {
         position: fixed;
@@ -1535,11 +1502,21 @@
         setsLong: [4],
         weeklyTarget: [6, 12],
       };
+      const EPAULES3 = {
+        size: "epaules3",
+        label: "Petit muscle (3 exos)",
+        exRange: "3 exos",
+        setsLabel: "4 séries",
+        setsShort: [4, 4, 4],
+        setsStandard: [4, 4, 4],
+        setsLong: [4, 4, 4],
+        weeklyTarget: [12, 20],
+      };
       const PROFILE = {
         pecs: GROS,
         dos: GROS,
         trapezes: PETIT,
-        epaules: PETIT,
+        epaules: EPAULES3,
         biceps: PETIT,
         triceps: PETIT,
         avantbras: FINITION,
@@ -1555,6 +1532,7 @@
       const exCountFor = (m, mins = 60, exMode = "auto") => {
         const sz = (PROFILE[m] || GROS).size;
         if (sz === "finition") return 1;
+        if (sz === "epaules3") return 3;
         if (exMode === "2") return sz === "petit" ? 1 : 2;
         if (exMode === "3") return sz === "petit" ? 2 : 3;
         if (sz === "gros") return mins <= 40 ? 2 : 3;
@@ -2380,28 +2358,85 @@
           part: "Anti-rotation",
           inc: 2.5,
         },
+
+        /* ===== Exercices supplémentaires ===== */
+        {"id": "dc-smith", "n": "Développé couché Smith machine", "m": "pecs", "t": "c", "mov": "guided", "angle": "flat", "part": "Milieu · Sternum", "inc": 2.5},
+        {"id": "dc-halt-neutre", "n": "Développé haltères prise neutre", "m": "pecs", "t": "c", "mov": "free", "angle": "flat", "part": "Milieu · Sternum", "inc": 2},
+        {"id": "dincl-smith", "n": "Développé incliné Smith machine", "m": "pecs", "t": "c", "mov": "guided", "angle": "incline", "part": "Haut des pecs", "inc": 2.5},
+        {"id": "ecarte-pou-bas", "n": "Écarté poulie basse vers le haut", "m": "pecs", "t": "i", "mov": "iso", "angle": "incline", "part": "Haut des pecs · Isolation", "inc": 2.5},
+        {"id": "dips-mach", "n": "Dips assistés / machine à dips", "m": "pecs", "t": "c", "mov": "guided", "angle": "lower", "part": "Bas des pecs", "inc": 2.5},
+        {"id": "pompes-decl", "n": "Pompes déclinées (pieds en hauteur)", "m": "pecs", "t": "c", "mov": "free", "angle": "incline", "part": "Haut des pecs", "bw": 1, "inc": 2.5},
+        {"id": "svend-press", "n": "Svend press (disque serré)", "m": "pecs", "t": "i", "mov": "iso", "angle": "fly", "part": "Isolation · Contraction", "inc": 1},
+        {"id": "tractions-supi", "n": "Tractions supination (chin-up)", "m": "dos", "t": "c", "mov": "free", "angle": "lat", "part": "Lats · Bas des dorsaux", "bw": 1, "inc": 2.5},
+        {"id": "tractions-neutre", "n": "Tractions prise neutre", "m": "dos", "t": "c", "mov": "free", "angle": "lat", "part": "Lats · Largeur", "bw": 1, "inc": 2.5},
+        {"id": "rowing-tbar", "n": "Rowing T-bar", "m": "dos", "t": "c", "mov": "free", "angle": "mid", "part": "Milieu · Épaisseur", "inc": 2.5},
+        {"id": "rowing-seal", "n": "Rowing poitrine sur banc incliné (haltères)", "m": "dos", "t": "c", "mov": "free", "angle": "mid", "part": "Milieu · Rhomboïdes", "inc": 2},
+        {"id": "tirage-hor-uni", "n": "Tirage horizontal unilatéral poulie", "m": "dos", "t": "c", "mov": "guided", "angle": "mid", "part": "Milieu · Unilatéral", "inc": 2.5},
+        {"id": "tirage-bras-tendus", "n": "Tirage bras tendus à la poulie", "m": "dos", "t": "i", "mov": "iso", "angle": "pullover", "part": "Pull-over · Grand dorsal", "inc": 2.5},
+        {"id": "rdl", "n": "Soulevé de terre roumain (léger)", "m": "dos", "t": "c", "mov": "free", "angle": "low", "part": "Bas du dos · Chaîne postérieure", "inc": 2.5},
+        {"id": "superman", "n": "Superman / extensions au sol", "m": "dos", "t": "i", "mov": "iso", "angle": "low", "part": "Bas du dos · Lombaires", "bw": 1, "inc": 2.5},
+        {"id": "shrug-mach", "n": "Shrugs Smith / machine", "m": "trapezes", "t": "i", "mov": "guided", "angle": "sup", "part": "Trapèzes supérieurs", "inc": 2.5},
+        {"id": "shrug-trapbar", "n": "Shrugs trap bar", "m": "trapezes", "t": "i", "mov": "iso", "angle": "sup", "part": "Trapèzes supérieurs", "inc": 2.5},
+        {"id": "rowing-menton", "n": "Tirage menton prise large", "m": "trapezes", "t": "c", "mov": "free", "angle": "sup", "part": "Trapèzes sup. & deltoïdes", "inc": 2.5},
+        {"id": "prone-t", "n": "Élévations en T sur banc incliné", "m": "trapezes", "t": "i", "mov": "iso", "angle": "midlow", "part": "Trapèzes moyens", "inc": 1},
+        {"id": "cable-y", "n": "Élévations en Y à la poulie basse", "m": "trapezes", "t": "i", "mov": "iso", "angle": "midlow", "part": "Trapèzes inférieurs", "inc": 1},
+        {"id": "dev-smith-ep", "n": "Développé épaules Smith machine", "m": "epaules", "t": "c", "mov": "guided", "angle": "press", "part": "Faisceau antérieur", "inc": 2.5},
+        {"id": "landmine-press", "n": "Landmine press unilatéral", "m": "epaules", "t": "c", "mov": "free", "angle": "press", "part": "Faisceau antérieur", "inc": 2.5},
+        {"id": "elev-front-halt", "n": "Élévations frontales haltères", "m": "epaules", "t": "i", "mov": "iso", "angle": "press", "part": "Faisceau antérieur · Isolation", "inc": 1},
+        {"id": "elev-front-pou", "n": "Élévations frontales poulie / disque", "m": "epaules", "t": "i", "mov": "iso", "angle": "press", "part": "Faisceau antérieur · Isolation", "inc": 2.5},
+        {"id": "elev-lat-assis", "n": "Élévations latérales assis", "m": "epaules", "t": "i", "mov": "iso", "angle": "lat", "part": "Faisceau latéral", "inc": 1},
+        {"id": "elev-lat-uni-pou", "n": "Élévation latérale unilatérale penchée (poulie)", "m": "epaules", "t": "i", "mov": "iso", "angle": "lat", "part": "Faisceau latéral", "inc": 1},
+        {"id": "elev-lat-incl", "n": "Élévations latérales allongé sur le côté", "m": "epaules", "t": "i", "mov": "iso", "angle": "lat", "part": "Faisceau latéral · Étirement", "inc": 1},
+        {"id": "rowing-menton-ep", "n": "Tirage menton large à la poulie", "m": "epaules", "t": "c", "mov": "guided", "angle": "lat", "part": "Faisceau latéral · Polyarticulaire", "inc": 2.5},
+        {"id": "oiseau-pou", "n": "Oiseau croisé à la poulie", "m": "epaules", "t": "i", "mov": "iso", "angle": "rear", "part": "Faisceau postérieur", "inc": 1},
+        {"id": "oiseau-incl", "n": "Oiseau allongé sur banc incliné", "m": "epaules", "t": "i", "mov": "iso", "angle": "rear", "part": "Faisceau postérieur", "inc": 1},
+        {"id": "rear-row", "n": "Rowing deltoïde postérieur (coude haut)", "m": "epaules", "t": "i", "mov": "iso", "angle": "rear", "part": "Faisceau postérieur", "inc": 2.5},
+        {"id": "curl-barre", "n": "Curl barre droite", "m": "biceps", "t": "i", "mov": "iso", "angle": "sup", "part": "Chef court · Supination", "inc": 2.5},
+        {"id": "curl-concentre", "n": "Curl concentré", "m": "biceps", "t": "i", "mov": "iso", "angle": "sup", "part": "Chef court · Pic", "inc": 1},
+        {"id": "curl-spider", "n": "Spider curl (banc incliné ventre)", "m": "biceps", "t": "i", "mov": "iso", "angle": "sup", "part": "Chef court · Contraction", "inc": 1},
+        {"id": "curl-bayesian", "n": "Curl Bayesian (dos à la poulie)", "m": "biceps", "t": "i", "mov": "iso", "angle": "stretch", "part": "Longue portion · Étirement", "inc": 1},
+        {"id": "curl-zottman", "n": "Curl Zottman", "m": "biceps", "t": "i", "mov": "iso", "angle": "neut", "part": "Brachial & Brachio-radial", "inc": 1},
+        {"id": "curl-marteau-croise", "n": "Curl marteau croisé", "m": "biceps", "t": "i", "mov": "iso", "angle": "neut", "part": "Brachial · Prise neutre", "inc": 1},
+        {"id": "french-halt", "n": "Extension couchée haltères (French press)", "m": "triceps", "t": "i", "mov": "iso", "angle": "long", "part": "Longue portion", "inc": 1},
+        {"id": "ext-uni-pou", "n": "Extension unilatérale poulie (prise inversée)", "m": "triceps", "t": "i", "mov": "iso", "angle": "push", "part": "Chef médial", "inc": 1},
+        {"id": "ext-croise-pou", "n": "Extension croisée à la poulie", "m": "triceps", "t": "i", "mov": "iso", "angle": "push", "part": "Chef latéral", "inc": 1},
+        {"id": "jm-press", "n": "JM press", "m": "triceps", "t": "c", "mov": "free", "angle": "comp", "part": "Polyarticulaire", "inc": 2.5},
+        {"id": "dips-banc", "n": "Dips entre deux bancs", "m": "triceps", "t": "c", "mov": "free", "angle": "comp", "part": "Polyarticulaire", "bw": 1, "inc": 2.5},
+        {"id": "tri-mach", "n": "Machine à triceps / dips assis", "m": "triceps", "t": "c", "mov": "guided", "angle": "comp", "part": "Polyarticulaire guidé", "inc": 2.5},
+        {"id": "wrist-curl-dos", "n": "Flexions de poignets barre derrière le dos", "m": "avantbras", "t": "i", "mov": "iso", "angle": "flex", "part": "Fléchisseurs du poignet", "inc": 2.5},
+        {"id": "pinch-grip", "n": "Pince disques (plate pinch)", "m": "avantbras", "t": "i", "mov": "iso", "angle": "grip", "part": "Poigne · Pouce", "inc": 2.5},
+        {"id": "towel-hang", "n": "Suspension à la serviette", "m": "avantbras", "t": "i", "mov": "iso", "angle": "grip", "part": "Poigne / Préhension", "bw": 1, "inc": 2.5},
+        {"id": "rev-curl-pou", "n": "Curl inversé à la poulie", "m": "avantbras", "t": "i", "mov": "iso", "angle": "ext", "part": "Brachio-radial & Extenseurs", "inc": 2.5},
+        {"id": "leg-raise-sol", "n": "Relevés de jambes allongé au sol", "m": "abdos", "t": "i", "mov": "iso", "angle": "lower", "part": "Bas des abdos", "bw": 1, "inc": 1},
+        {"id": "v-up", "n": "V-ups (crunch en V)", "m": "abdos", "t": "i", "mov": "iso", "angle": "upper", "part": "Grand droit complet", "bw": 1, "inc": 1},
+        {"id": "dead-bug", "n": "Dead bug", "m": "abdos", "t": "i", "mov": "iso", "angle": "core", "part": "Transverse · Gainage", "bw": 1, "inc": 1},
+        {"id": "hollow", "n": "Hollow body hold", "m": "abdos", "t": "i", "mov": "iso", "angle": "core", "part": "Transverse & Grand droit", "bw": 1, "inc": 1},
+        {"id": "crunch-oblique", "n": "Crunch oblique croisé", "m": "obliques", "t": "i", "mov": "iso", "angle": "rot", "part": "Rotation", "bw": 1, "inc": 1},
+        {"id": "landmine-rot", "n": "Rotations landmine", "m": "obliques", "t": "i", "mov": "iso", "angle": "rot", "part": "Rotation", "inc": 2.5},
+        {"id": "suitcase-carry", "n": "Marche valise unilatérale", "m": "obliques", "t": "i", "mov": "iso", "angle": "antirot", "part": "Anti-flexion latérale", "inc": 2},
+        {"id": "side-bend-banc", "n": "Flexions latérales banc à 45°", "m": "obliques", "t": "i", "mov": "iso", "angle": "latflex", "part": "Flexion latérale", "bw": 1, "inc": 2.5},
       ];
       const EXI = Object.fromEntries(EX.map((e) => [e.id, e]));
 
-      /* ============ Base de démonstrations (77 exercices : animation + consignes) ============ */
+      /* ============ Base de démonstrations (animation + consignes pour chaque exercice) ============ */
       const DEMOS = {
         /* Pectoraux */
         "dc-barre": {
-          anim: "bench-flat",
+          anim: "press-flat",
           setup:
             "Allongé sur le banc plat, pieds ancrés au sol, omoplates resserrées et abaissées. Prise un peu plus large que les épaules.",
           exec: "Descends la barre en contrôle jusqu'au bas du sternum (coudes à ~45° du buste), puis pousse explosivement sans décoller les fessiers.",
           tip: "Ne fais pas rebondir la barre sur la poitrine et garde les poignets droits dans l'alignement des avant-bras.",
         },
         "dc-halt": {
-          anim: "bench-flat",
+          anim: "press-flat",
           setup:
             "Assis puis allongé sur le banc plat avec un haltère dans chaque main, paumes vers l'avant, omoplates serrées.",
           exec: "Descends les haltères sur les côtés de la poitrine pour un étirement profond, puis remonte en rapprochant légèrement les haltères en haut.",
           tip: "Garde les coudes sous les poignets tout au long du mouvement et évite d'entrechoquer les haltères en haut.",
         },
         "dc-machine": {
-          anim: "bench-flat",
+          anim: "press-flat",
           setup:
             "Règle le siège pour que les poignées soient à hauteur du milieu des pectoraux. Plaque le dos et les épaules contre le dossier.",
           exec: "Pousse les poignées vers l'avant en contractant fort les pectoraux, puis reviens lentement sans laisser les plaques retomber.",
@@ -2415,35 +2450,35 @@
           tip: "Évite de creuser le bas du dos : contracte abdos et fessiers pendant toute la série.",
         },
         "dincl-halt": {
-          anim: "bench-incline",
+          anim: "press-incline",
           setup:
             "Banc incliné à 30°–45°, omoplates fixées contre le dossier, haltères tenus au-dessus du haut de la poitrine.",
           exec: "Descends les haltères jusqu'au niveau des clavicules/haut des pecs en contrôlant, puis pousse vers le haut en gardant les coudes à 45°.",
           tip: "Une inclinaison de 30° cible idéalement le faisceau claviculaire sans surcharger l'avant des épaules.",
         },
         "dincl-barre": {
-          anim: "bench-incline",
+          anim: "press-incline",
           setup:
             "Banc à 30°–45°, prise un peu plus large que les épaules, poitrine sortie et pieds bien calés au sol.",
           exec: "Amène la barre juste sous les clavicules en contrôlant la descente, puis pousse verticalement en expirant.",
           tip: "Garde les coudes légèrement rentrés vers l'avant plutôt que totalement ouverts sur les côtés.",
         },
         "dincl-mach": {
-          anim: "bench-incline",
+          anim: "press-incline",
           setup:
             "Ajuste l'assise pour aligner les poignées avec le haut des pectoraux, dos bien plaqué.",
           exec: "Pousse les bras vers le haut et l'avant jusqu'à quasi-extension, puis freine le retour sur 2 à 3 secondes.",
           tip: "Ne décolle pas le haut du dos du coussin en fin de mouvement.",
         },
         dips: {
-          anim: "dips",
+          anim: "dips-pec",
           setup:
             "En appui sur les barres parallèles, buste légèrement penché vers l'avant (~20–30°) et jambes croisées en arrière.",
           exec: "Descends en fléchissant les coudes jusqu'à sentir un bon étirement des pectoraux (bras ~parallèles au sol), puis repousse.",
           tip: "L'inclinaison du buste vers l'avant et les coudes légèrement écartés transfèrent l'effort sur le bas des pectoraux.",
         },
         "ddecl-halt": {
-          anim: "bench-flat",
+          anim: "press-decline",
           setup:
             "Allongé sur banc décliné (-15° à -20°), jambes bloquées dans les boudins, omoplates serrées.",
           exec: "Descends les haltères vers le bas des pectoraux puis pousse à la verticale en gardant un contrôle total.",
@@ -2480,7 +2515,7 @@
 
         /* Dos complet */
         tractions: {
-          anim: "pullup",
+          anim: "pulldown",
           setup:
             "Suspends-toi à la barre en pronation (paumes vers l'avant), prise un peu plus large que les épaules, abdos gainés.",
           exec: "Abaisse les épaules puis tire les coudes vers les hanches pour amener le haut de la poitrine vers la barre. Redescends bras tendus.",
@@ -2594,7 +2629,7 @@
           tip: "La poulie maintient une résistance constante même en bas du mouvement.",
         },
         "y-raise": {
-          anim: "lat-raise",
+          anim: "y-raise",
           setup:
             "Allongé face contre un banc incliné à 30°–45°, haltères légers en main, pouces tournés vers le plafond.",
           exec: "Lève les bras tendus en diagonale pour former un Y avec le buste, maintiens 1 seconde en haut, puis redescends doucement.",
@@ -2608,7 +2643,7 @@
           tip: "Serre fortement les omoplates l'une contre l'autre au sommet du tirage.",
         },
         "tirage-scap": {
-          anim: "facepull",
+          anim: "face-pull",
           setup:
             "Debout face à la poulie haute réglée au niveau du visage, corde tenue en prise neutre.",
           exec: "Tire la corde vers le front en écartant les mains et en resserrant les omoplates vers l'arrière et le bas.",
@@ -2617,28 +2652,28 @@
 
         /* Épaules */
         "dev-mil": {
-          anim: "overhead-press",
+          anim: "ohp",
           setup:
             "Debout (ou assis), barre posée sur le haut des pectoraux, prise juste à l'extérieur des épaules, fessiers et abdos contractés.",
           exec: "Pousse la barre verticalement au-dessus de la tête en reculant légèrement le menton au passage, puis redescends sous contrôle.",
           tip: "Verrouille le bassin en serrant les fessiers pour éviter de cambrer le bas du dos.",
         },
         "dev-halt-ep": {
-          anim: "overhead-press",
+          anim: "ohp",
           setup:
             "Assis sur un banc dossier quasi vertical (80–85°), haltères à hauteur d'oreilles, coudes légèrement en avant du buste.",
           exec: "Pousse les haltères vers le haut sans les entrechoquer, puis redescends jusqu'à ce que les haltères frôlent les épaules.",
           tip: "Placer les coudes à ~30° vers l'avant (plan scapulaire) protège l'articulation acromio-claviculaire.",
         },
         arnold: {
-          anim: "overhead-press",
+          anim: "arnold",
           setup:
             "Assis dos calé, haltères tenus devant les épaules avec les paumes tournées vers toi (position de fin de curl).",
           exec: "Pousse les haltères vers le haut tout en effectuant une rotation des poignets pour finir paumes vers l'avant en haut.",
           tip: "Inverse la rotation progressivement pendant la descente pour solliciter les faisceaux antérieur et latéral.",
         },
         "dev-mach-ep": {
-          anim: "overhead-press",
+          anim: "ohp",
           setup:
             "Assis dos bien plaqué contre le dossier, siège ajusté pour que les poignées soient à hauteur des épaules.",
           exec: "Pousse les poignées vers le haut jusqu'à quasi-extension, puis freine la descente sur 2 secondes.",
@@ -2666,21 +2701,21 @@
           tip: "Relâche la prise des mains pour te concentrer uniquement sur la poussée des coudes.",
         },
         oiseau: {
-          anim: "lat-raise",
+          anim: "rear-fly",
           setup:
             "Buste penché presque à l'horizontale (ou allongé sur banc incliné), haltères sous la poitrine, paumes face à face.",
           exec: "Écarte les bras sur les côtés en arrière jusqu'à aligner les coudes avec les épaules, marque une pause, puis redescends.",
           tip: "Pense à éloigner les haltères sur les côtés plutôt que de les tirer vers le haut.",
         },
         "face-pull": {
-          anim: "facepull",
+          anim: "face-pull",
           setup:
             "Poulie réglée à hauteur des yeux, corde saisie pouces vers l'arrière, un pied en arrière pour la stabilité.",
           exec: "Tire le centre de la corde vers ton nez/front en écartant les mains et en pivotant les pouces vers l'arrière.",
           tip: "En fin de mouvement, tes mains doivent se retrouver à côté de tes oreilles (position double biceps).",
         },
         "oiseau-mach": {
-          anim: "fly",
+          anim: "rear-fly",
           setup:
             "Assis face au dossier du pec deck inversé, poignées saisies bras quasi tendus à hauteur d'épaules.",
           exec: "Ouvre les bras vers l'arrière en gardant les épaules basses, contracte l'arrière d'épaule 1 seconde, puis reviens lentement.",
@@ -2740,35 +2775,35 @@
 
         /* Triceps */
         skull: {
-          anim: "triceps-overhead",
+          anim: "skull",
           setup:
             "Allongé sur un banc plat, barre EZ tenue bras tendus légèrement inclinés vers l'arrière au-dessus de la tête.",
           exec: "Fléchis uniquement les coudes pour amener la barre juste derrière le sommet du crâne, puis tends les bras sans écarter les coudes.",
           tip: "Garder les bras légèrement inclinés vers l'arrière maintient la longue portion du triceps sous tension continue.",
         },
         "ext-nuque": {
-          anim: "triceps-overhead",
+          anim: "tri-overhead",
           setup:
             "Assis dos calé (ou debout), un haltère tenu à deux mains au-dessus de la tête, coudes pointés vers le plafond.",
           exec: "Descends l'haltère derrière la nuque en fléchissant au maximum les coudes, puis remonte jusqu'à extension complète.",
           tip: "Garde les coudes relativement serrés et les abdos gainés pour ne pas cambrer le dos.",
         },
         "ext-overhead-pou": {
-          anim: "triceps-overhead",
+          anim: "tri-overhead",
           setup:
             "Dos à la poulie basse ou moyenne, corde tenue derrière la tête, un pied en avant, buste légèrement penché.",
           exec: "Tends les bras vers l'avant et le haut en contractant fort les triceps, puis laisse les avant-bras revenir derrière la tête.",
           tip: "L'étirement sous charge de la longue portion favorise fortement l'hypertrophie du triceps.",
         },
         "ext-pou": {
-          anim: "triceps-pushdown",
+          anim: "tri-pushdown",
           setup:
             "Debout face à la poulie haute, corde saisie en prise neutre, coudes collés le long des côtes.",
           exec: "Pousse la corde vers le bas en écartant les deux brins de chaque côté des cuisses en bas, puis remonte à 90°.",
           tip: "Verrouille les coudes contre tes flancs : ils ne doivent avancer ni reculer.",
         },
         "ext-barre-pou": {
-          anim: "triceps-pushdown",
+          anim: "tri-pushdown",
           setup:
             "Face à la poulie haute avec barre droite ou coudée en pronation, buste légèrement penché, coudes fixes.",
           exec: "Abaisse la barre jusqu'à l'extension complète des bras en contractant les triceps, puis contrôle la remontée jusqu'à hauteur de poitrine.",
@@ -2782,14 +2817,14 @@
           tip: "Ne laisse pas le coude tomber pendant le mouvement.",
         },
         "dips-tri": {
-          anim: "dips",
+          anim: "dips-tri",
           setup:
             "En appui sur barres parallèles (ou bancs), buste bien droit et vertical, coudes serrés vers l'arrière.",
           exec: "Descends en pliant les coudes à 90° tout en gardant le buste vertical, puis pousse jusqu'à verrouiller les triceps.",
           tip: "Contrairement aux dips pecs, garde le torse droit et les coudes serrés près du corps.",
         },
         "dc-serre": {
-          anim: "bench-flat",
+          anim: "press-flat",
           setup:
             "Allongé sur banc plat, mains écartées de la largeur des épaules (pas trop serrées pour protéger les poignets).",
           exec: "Descends la barre vers le bas de la poitrine en gardant les coudes proches du buste, puis repousse avec les triceps.",
@@ -2826,7 +2861,7 @@
           tip: "Utilise une charge légère et privilégie des séries longues et propres.",
         },
         "farmers-walk": {
-          anim: "shrug",
+          anim: "farmers",
           setup:
             "Saisis deux haltères lourds (ou kettlebells), redresse-toi poitrine haute, épaules tirées en arrière et abdos gainés.",
           exec: "Marche à pas réguliers et contrôlés pendant 30 à 45 secondes en serrant les poignées le plus fort possible.",
@@ -2891,7 +2926,7 @@
           tip: "Arrête l'avancée dès que tu sens le bas du dos vouloir se creuser.",
         },
         plank: {
-          anim: "plank",
+          anim: "rollout",
           setup:
             "En appui sur les avant-bras et la pointe des pieds (disque posé sur le milieu du dos si lesté), corps aligné.",
           exec: "Contracte intensément les abdominaux, les fessiers et les quadriceps pendant 45 à 60 secondes avec une respiration calme.",
@@ -2914,21 +2949,21 @@
           tip: "Tourne bien les épaules à chaque répétition plutôt que de simplement déplacer les mains de côté.",
         },
         "windshield-wipers": {
-          anim: "leg-raise",
+          anim: "wipers",
           setup:
             "Allongé au sol bras en croix (ou suspendu à la barre), jambes levées à 90°.",
           exec: "Bascule les jambes contrôlées d'un côté puis de l'autre comme un essuie-glace en gardant les épaules plaquées.",
           tip: "Plie légèrement les genoux pour réduire la difficulté si le bas du dos décolle.",
         },
         "side-bend": {
-          anim: "hinge",
+          anim: "side-bend",
           setup:
             "Debout, un haltère lourd dans une seule main (ou poignée de poulie basse), l'autre main derrière la tête.",
           exec: "Incline le buste latéralement du côté de la charge sans pencher en avant, puis redresse-toi en contractant l'oblique opposé.",
           tip: "Travaille avec un seul haltère à la fois : deux haltères s'annuleraient mutuellement.",
         },
         "side-plank": {
-          anim: "plank",
+          anim: "side-plank",
           setup:
             "Allongé sur le côté en appui sur un avant-bras (coude sous l'épaule) et le bord externe du pied, corps aligné.",
           exec: "Monte les hanches pour aligner le corps, puis effectue de légères descentes et remontées contrôlées du bassin.",
@@ -2941,880 +2976,683 @@
           exec: "Pousse les mains droit devant toi jusqu'à extension complète en résistant à la traction latérale du câble, tiens 2 secondes, reviens.",
           tip: "Ne laisse ni tes épaules ni tes hanches pivoter vers la poulie : c'est un exercice pur d'anti-rotation.",
         },
+        /* Démos des exercices supplémentaires */
+        "dc-smith": {"anim": "press-flat", "setup": "Banc plat centré sous la barre guidée : la barre doit descendre sur le bas des pectoraux. Omoplates serrées, pieds au sol.", "exec": "Déverrouille la barre, descends jusqu'à effleurer la poitrine, puis pousse sans verrouiller sèchement les coudes.", "tip": "Vérifie le placement du banc avant de charger : la trajectoire fixe ne pardonne pas un mauvais alignement."},
+        "dc-halt-neutre": {"anim": "press-flat", "setup": "Allongé sur banc plat, haltères tenus paumes face à face, coudes près du buste.", "exec": "Descends les haltères le long de la cage thoracique, puis pousse en serrant les pectoraux en haut.", "tip": "Variante plus douce pour les épaules : idéale si le développé classique te gêne."},
+        "dincl-smith": {"anim": "press-incline", "setup": "Banc incliné à 30° placé pour que la barre descende sous les clavicules. Omoplates rétractées.", "exec": "Descends lentement vers le haut de la poitrine, puis pousse dans l'axe guidé.", "tip": "Garde les coudes légèrement rentrés pour protéger l'avant des épaules."},
+        "ecarte-pou-bas": {"anim": "fly", "setup": "Poulies réglées en bas, un pas en avant, buste droit, bras le long du corps légèrement fléchis.", "exec": "Remonte les poignées en arc vers le haut jusqu'au niveau du menton en rapprochant les mains, contracte 1 s.", "tip": "Pense « soulever la poitrine » : le mouvement vise le faisceau claviculaire."},
+        "dips-mach": {"anim": "dips-pec", "setup": "Genoux sur la plateforme d'assistance (ou assis à la machine), buste penché vers l'avant.", "exec": "Descends jusqu'à l'étirement des pectoraux puis repousse en gardant le buste incliné.", "tip": "Plus l'assistance est lourde, plus c'est facile : réduis-la progressivement."},
+        "pompes-decl": {"anim": "pushup", "setup": "Pieds sur un banc, mains au sol un peu plus larges que les épaules, corps gainé.", "exec": "Descends le haut de la poitrine vers le sol puis repousse en expirant.", "tip": "Plus les pieds sont hauts, plus le haut des pecs et l'avant d'épaule travaillent."},
+        "svend-press": {"anim": "press-flat", "setup": "Debout, un disque serré entre les paumes contre le sternum.", "exec": "Tends les bras devant toi en écrasant le disque entre les mains, reviens lentement.", "tip": "C'est la pression des mains qui fait travailler les pecs : serre fort tout le long."},
+        "tractions-supi": {"anim": "pulldown", "setup": "Suspendu à la barre, paumes vers toi, mains à largeur d'épaules, épaules engagées.", "exec": "Tire les coudes vers les hanches jusqu'à passer le menton au-dessus de la barre, redescends bras tendus.", "tip": "Évite le balancement : un départ bras tendus et contrôlé vaut mieux que des reps à l'élan."},
+        "tractions-neutre": {"anim": "pulldown", "setup": "Poignées parallèles, paumes face à face, corps gainé.", "exec": "Tire la poitrine vers les poignées en abaissant les omoplates, puis descends en contrôle.", "tip": "Prise souvent la plus confortable pour les coudes et les épaules."},
+        "rowing-tbar": {"anim": "row", "setup": "Debout au-dessus de la barre, buste penché à ~45°, dos plat, poignée en V.", "exec": "Tire la charge vers le bas de la poitrine en serrant les omoplates, puis redescends lentement.", "tip": "Le dos reste plat du début à la fin : si tu t'arrondis, allège."},
+        "rowing-seal": {"anim": "row", "setup": "Allongé ventre contre un banc incliné à 30°, un haltère dans chaque main, bras tendus.", "exec": "Tire les coudes vers le haut et l'arrière en serrant les omoplates, pause 1 s, redescends.", "tip": "Le banc supprime l'élan et protège les lombaires : focus 100 % dos."},
+        "tirage-hor-uni": {"anim": "row", "setup": "Assis ou debout face à la poulie à hauteur de nombril, une poignée dans une main.", "exec": "Tire le coude vers la hanche en gardant le buste immobile, reviens en laissant l'omoplate s'étirer vers l'avant.", "tip": "Corrige les déséquilibres gauche/droite : commence toujours par le côté le plus faible."},
+        "tirage-bras-tendus": {"anim": "pullover", "setup": "Debout face à la poulie haute, barre droite ou corde, buste légèrement penché, bras presque tendus.", "exec": "Ramène la barre vers les cuisses en arc de cercle avec les bras tendus, puis remonte lentement.", "tip": "Garde les coudes verrouillés à un léger angle : ce sont les dorsaux qui tirent, pas les triceps."},
+        "rdl": {"anim": "hinge", "setup": "Debout, barre ou haltères devant les cuisses, genoux légèrement fléchis, dos plat.", "exec": "Pousse les hanches vers l'arrière en faisant glisser la charge le long des jambes jusqu'à mi-tibia, puis remonte en contractant fessiers et lombaires.", "tip": "Charge modérée : l'objectif ici est le gainage lombaire, pas la performance."},
+        "superman": {"anim": "hinge", "setup": "Allongé sur le ventre, bras tendus devant toi.", "exec": "Décolle simultanément bras, poitrine et jambes, tiens 2 s, redescends doucement.", "tip": "Regarde le sol pour garder la nuque neutre."},
+        "shrug-mach": {"anim": "shrug", "setup": "Debout face à la barre guidée, prise largeur d'épaules, bras tendus.", "exec": "Monte les épaules droit vers les oreilles, pause 1 s en haut, redescends lentement.", "tip": "Ne roule pas les épaules : monter-descendre suffit et protège l'articulation."},
+        "shrug-trapbar": {"anim": "shrug", "setup": "Au centre de la trap bar, poignées en prise neutre, dos droit.", "exec": "Hausse les épaules au maximum, tiens la contraction, puis relâche en contrôle.", "tip": "La prise neutre permet souvent de charger plus lourd en restant confortable."},
+        "rowing-menton": {"anim": "shrug", "setup": "Debout, barre ou poulie basse, prise plus large que les épaules.", "exec": "Monte la barre le long du corps jusqu'au bas de la poitrine en menant avec les coudes.", "tip": "Ne monte pas plus haut que le bas du sternum pour épargner les épaules."},
+        "prone-t": {"anim": "y-raise", "setup": "Ventre contre un banc incliné à 30°, petits haltères, bras pendants.", "exec": "Écarte les bras sur les côtés à l'horizontale (forme de T) en serrant les omoplates, pause 1 s.", "tip": "Pouces vers le haut et charge légère : c'est la contraction qui compte."},
+        "cable-y": {"anim": "y-raise", "setup": "Entre deux poulies basses, câbles croisés, buste légèrement penché.", "exec": "Monte les bras en diagonale en forme de Y au-dessus de la tête en abaissant les omoplates.", "tip": "Pense « omoplates dans les poches arrière » pendant la montée."},
+        "dev-smith-ep": {"anim": "ohp", "setup": "Assis sur un banc à dossier vertical sous la barre guidée, barre au niveau du menton.", "exec": "Pousse la barre au-dessus de la tête jusqu'à quasi-extension, redescends au menton.", "tip": "Garde le bas du dos plaqué au dossier, pas de cambrure excessive."},
+        "landmine-press": {"anim": "ohp", "setup": "Debout ou à genoux, extrémité de la barre landmine tenue à hauteur d'épaule.", "exec": "Pousse la barre vers le haut et l'avant jusqu'à extension du bras, reviens lentement.", "tip": "Trajectoire en arc très confortable pour les épaules sensibles."},
+        "elev-front-halt": {"anim": "front-raise", "setup": "Debout, haltères devant les cuisses, paumes vers le corps ou en prise neutre.", "exec": "Monte les bras tendus devant toi jusqu'à hauteur des yeux, redescends en 2–3 s.", "tip": "Pas d'élan avec le buste : si tu te balances, prends plus léger."},
+        "elev-front-pou": {"anim": "front-raise", "setup": "Dos à la poulie basse (câble entre les jambes) ou disque tenu à deux mains.", "exec": "Monte devant toi jusqu'à hauteur des épaules, pause brève, redescends lentement.", "tip": "La poulie garde une tension constante, même en bas du mouvement."},
+        "elev-lat-assis": {"anim": "lat-raise", "setup": "Assis au bord d'un banc, dos droit, haltères le long du corps.", "exec": "Monte les bras sur les côtés jusqu'à l'horizontale, coudes légèrement fléchis, redescends lentement.", "tip": "La position assise supprime la triche avec les jambes."},
+        "elev-lat-uni-pou": {"anim": "lat-raise", "setup": "De profil à la poulie basse, une main tient le montant pour s'incliner légèrement à l'opposé.", "exec": "Monte le bras sur le côté jusqu'à l'horizontale en menant avec le coude.", "tip": "L'inclinaison augmente la tension en bas du mouvement, là où les haltères n'en ont presque pas."},
+        "elev-lat-incl": {"anim": "lat-raise", "setup": "Allongé sur le côté sur un banc incliné à ~45°, haltère dans la main du dessus.", "exec": "Monte le bras jusqu'à la verticale environ, redescends lentement devant le corps.", "tip": "Excellent étirement du deltoïde moyen : charge légère, amplitude maximale."},
+        "rowing-menton-ep": {"anim": "shrug", "setup": "Face à la poulie basse avec une barre droite, prise large.", "exec": "Monte les coudes sur les côtés jusqu'à hauteur d'épaules, barre au niveau du bas de la poitrine.", "tip": "Ce sont les coudes qui montent, pas les mains : arrête-toi à l'horizontale."},
+        "oiseau-pou": {"anim": "rear-fly", "setup": "Entre deux poulies à hauteur d'épaules, câbles croisés (main droite tient le câble gauche).", "exec": "Écarte les bras vers l'arrière à l'horizontale, coudes légèrement fléchis, puis reviens lentement.", "tip": "Ne serre pas trop les omoplates : laisse travailler l'arrière de l'épaule."},
+        "oiseau-incl": {"anim": "rear-fly", "setup": "Ventre contre un banc incliné à 30–45°, haltères légers pendants.", "exec": "Écarte les bras sur les côtés, petits doigts vers le haut, jusqu'à l'horizontale.", "tip": "Le banc empêche de tricher avec le dos : charge légère, contrôle total."},
+        "rear-row": {"anim": "face-pull", "setup": "Face à une poulie à hauteur de poitrine ou haltère un bras, coude ouvert à 90° du buste.", "exec": "Tire le coude vers l'arrière et vers l'extérieur à hauteur d'épaule, sans rapprocher l'omoplate.", "tip": "Coude haut et ouvert = arrière d'épaule. Coude bas et collé = dos."},
+        "curl-barre": {"anim": "curl", "setup": "Debout, barre droite en supination, mains largeur d'épaules, coudes contre le corps.", "exec": "Monte la barre en fléchissant les coudes sans les avancer, redescends lentement jusqu'à extension.", "tip": "Si le dos bascule en arrière, la charge est trop lourde."},
+        "curl-concentre": {"anim": "curl", "setup": "Assis, coude calé contre l'intérieur de la cuisse, haltère bras tendu.", "exec": "Monte l'haltère vers l'épaule en tournant légèrement le petit doigt vers le haut, serre 1 s.", "tip": "Mouvement strict : seul l'avant-bras bouge."},
+        "curl-spider": {"anim": "curl", "setup": "Ventre contre un banc incliné à 45°, bras pendants à la verticale.", "exec": "Monte les haltères ou la barre EZ en gardant les bras verticaux, contracte fort en haut.", "tip": "La tension est maximale en contraction : ralentis la descente."},
+        "curl-bayesian": {"anim": "curl", "setup": "Dos à la poulie basse, un pas en avant, bras tiré vers l'arrière du corps.", "exec": "Fléchis le coude en gardant le bras derrière la ligne du buste, redescends jusqu'à l'étirement complet.", "tip": "Le bras en arrière étire la longue portion : un des meilleurs exercices pour la masse."},
+        "curl-zottman": {"anim": "curl", "setup": "Debout, haltères en supination.", "exec": "Monte en supination, tourne les poignets en pronation en haut, puis redescends lentement paumes vers le bas.", "tip": "La descente en pronation travaille fort l'avant-bras : va lentement."},
+        "curl-marteau-croise": {"anim": "curl", "setup": "Debout, haltères en prise neutre le long du corps.", "exec": "Monte l'haltère en diagonale vers l'épaule opposée, alterne les bras.", "tip": "Accent sur le brachial, qui « pousse » le biceps vers le haut visuellement."},
+        "french-halt": {"anim": "skull", "setup": "Allongé sur banc plat, haltères bras tendus au-dessus des épaules, prise neutre.", "exec": "Fléchis les coudes pour descendre les haltères de chaque côté de la tête, puis tends les bras.", "tip": "Les coudes restent pointés vers le plafond, sans s'écarter."},
+        "ext-uni-pou": {"anim": "tri-pushdown", "setup": "Face à la poulie haute, poignée en supination (paume vers le haut), coude collé au corps.", "exec": "Pousse la poignée vers le bas jusqu'à extension complète, reviens lentement.", "tip": "Le travail unilatéral permet de bien sentir chaque triceps."},
+        "ext-croise-pou": {"anim": "tri-pushdown", "setup": "Entre deux poulies hautes, câbles croisés, sans poignée ou poignées simples.", "exec": "Tends les bras vers le bas et l'extérieur en forme de X, contracte, reviens en contrôle.", "tip": "Très efficace pour le chef latéral (le « fer à cheval »)."},
+        "jm-press": {"anim": "skull", "setup": "Allongé sur banc plat, barre en prise serrée au-dessus de la poitrine.", "exec": "Descends la barre vers le menton en avançant légèrement les coudes, puis pousse.", "tip": "Hybride entre développé serré et barre au front : charge progressive, technique d'abord."},
+        "dips-banc": {"anim": "dips-tri", "setup": "Mains sur le bord d'un banc derrière toi, jambes tendues sur un autre banc ou au sol.", "exec": "Descends en fléchissant les coudes jusqu'à 90°, puis repousse en tendant les bras.", "tip": "Ne descends pas plus bas que 90° pour épargner l'avant des épaules."},
+        "tri-mach": {"anim": "dips-tri", "setup": "Assis à la machine, poignées à côté du buste, dos plaqué.", "exec": "Pousse les poignées vers le bas jusqu'à extension, reviens lentement.", "tip": "Garde les épaules basses pendant toute la poussée."},
+        "wrist-curl-dos": {"anim": "wrist", "setup": "Debout, barre tenue derrière les fesses, paumes vers l'arrière.", "exec": "Enroule les poignets vers le haut, laisse la barre rouler jusqu'au bout des doigts en descendant.", "tip": "Amplitude complète, rythme lent : les avant-bras répondent bien aux reps élevées."},
+        "pinch-grip": {"anim": "farmers", "setup": "Deux disques lisses face à face, tenus entre le pouce et les doigts.", "exec": "Tiens les disques bras le long du corps le plus longtemps possible (ou marche).", "tip": "Note le temps de maintien et essaie de le battre à chaque séance."},
+        "towel-hang": {"anim": "hang", "setup": "Une ou deux serviettes passées sur la barre fixe, tenues à pleine main.", "exec": "Suspends-toi bras tendus, épaules engagées, le plus longtemps possible.", "tip": "Plus dur que la barre : commence par des séries courtes."},
+        "rev-curl-pou": {"anim": "curl", "setup": "Face à la poulie basse, barre droite en pronation (paumes vers le bas).", "exec": "Fléchis les coudes en gardant les poignets droits, redescends lentement.", "tip": "Ne laisse pas les poignets se casser vers le bas."},
+        "leg-raise-sol": {"anim": "leg-raise", "setup": "Allongé sur le dos, mains sous les fesses, jambes tendues.", "exec": "Monte les jambes jusqu'à la verticale, puis redescends sans toucher le sol.", "tip": "Plaque le bas du dos au sol tout au long du mouvement."},
+        "v-up": {"anim": "crunch", "setup": "Allongé sur le dos, bras tendus derrière la tête, jambes tendues.", "exec": "Monte simultanément bras et jambes pour te toucher les pieds, redescends en contrôle.", "tip": "Version plus facile : genoux fléchis (tuck-ups)."},
+        "dead-bug": {"anim": "crunch", "setup": "Allongé sur le dos, bras tendus vers le plafond, genoux à 90° au-dessus des hanches.", "exec": "Tends un bras et la jambe opposée vers le sol sans cambrer, reviens, alterne.", "tip": "Expire en tendant : le bas du dos ne doit jamais décoller."},
+        "hollow": {"anim": "crunch", "setup": "Allongé sur le dos, bras tendus derrière la tête, jambes tendues.", "exec": "Décolle épaules et jambes du sol en forme de banane, bas du dos plaqué, tiens 20–40 s.", "tip": "Plie les genoux si le bas du dos se décolle."},
+        "crunch-oblique": {"anim": "crunch", "setup": "Allongé sur le dos, genoux fléchis, mains derrière la tête.", "exec": "Monte en rapprochant le coude du genou opposé, redescends, alterne.", "tip": "Ce n'est pas le coude qui bouge : c'est la cage thoracique qui pivote."},
+        "landmine-rot": {"anim": "woodchopper", "setup": "Debout face à la barre landmine, extrémité tenue à deux mains bras tendus devant toi.", "exec": "Fais passer la barre d'une hanche à l'autre en arc de cercle en pivotant le buste et les pieds.", "tip": "Mouvement contrôlé, pas d'élan : les bras restent tendus."},
+        "suitcase-carry": {"anim": "farmers", "setup": "Un seul haltère ou kettlebell lourd dans une main, buste droit.", "exec": "Marche 20–30 m sans te pencher du côté de la charge, change de main.", "tip": "Épaules à l'horizontale : c'est l'oblique opposé qui te tient droit."},
+        "side-bend-banc": {"anim": "side-bend", "setup": "De côté sur le banc à lombaires, hanche contre le coussin, pieds bloqués.", "exec": "Descends le buste sur le côté puis remonte en contractant l'oblique du dessus.", "tip": "Ajoute un disque contre la poitrine pour progresser."},
       };
 
-      /* ============ Moteur de démonstration : figures articulées interpolées entre 2 poses ============ */
-      const lerpPt = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-      const lerpPose = (A, B, e) => {
-        const o = {};
-        for (const k in A) o[k] = lerpPt(A[k], B[k] || A[k], e);
-        return o;
-      };
-      const ease = (x) => x * x * (3 - 2 * x);
+      /* Génère le SVG animé adapté à chaque type de mouvement */
+      function demoSvg(animType) {
+        const defs = `<defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--acc)"/>
+          </marker>
+        </defs>`;
+        const grid = `<line x1="20" y1="168" x2="300" y2="168" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>`;
+        const phases = `<text class="phase-a" x="160" y="185" text-anchor="middle" font-size="10" fill="var(--mut)">Phase active · effort contrôlé</text><text class="phase-b" x="160" y="185" text-anchor="middle" font-size="10" fill="var(--mut)">Retour lent · 2 à 3 s</text>`;
+        const glow = (cx, cy, r) => `<circle class="anim-pulse" cx="${cx}" cy="${cy}" r="${r}" fill="var(--acc)" opacity="0.22"/>`;
 
-      const SIDE_SEGS = [
-        ["hip", "knee", 14, "leg"],
-        ["knee", "foot", 10, "leg"],
-        ["sh", "hip", 24, "torso"],
-        ["sh", "head", 8, "neck"],
-        ["sh", "el", 9, "arm"],
-        ["el", "hd", 8, "arm"],
-      ];
-      const WRIST_SEGS = [
-        ["hip", "knee", 14, "leg"],
-        ["knee", "foot", 10, "leg"],
-        ["sh", "hip", 22, "torso"],
-        ["sh", "head", 8, "neck"],
-        ["sh", "el", 9, "arm"],
-        ["el", "wr", 8, "arm"],
-        ["wr", "hd", 7, "arm"],
-      ];
-      const FRONT_SEGS = [
-        ["hipL", "knL", 13, "leg"],
-        ["knL", "ftL", 10, "leg"],
-        ["hipR", "knR", 13, "leg"],
-        ["knR", "ftR", 10, "leg"],
-        ["poly", ["shL", "shR", "hipR", "hipL"], 12],
-        ["neck", "head", 8, "neck"],
-        ["shL", "elL", 9, "arm"],
-        ["elL", "hdL", 8, "arm"],
-        ["shR", "elR", 9, "arm"],
-        ["elR", "hdR", 8, "arm"],
-      ];
+        switch (animType) {
+          case "press-flat":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Développé couché — vue de côté">${defs}${grid}
+              <rect x="72" y="126" width="152" height="12" rx="5" fill="var(--s2)" stroke="var(--line)" stroke-width="2"/>
+              <line x1="92" y1="138" x2="92" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="204" y1="138" x2="204" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <circle cx="98" cy="112" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="112" y1="118" x2="192" y2="118" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="192,118 216,136 220,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(152, 106, 15)}
+              <line x1="242" y1="126" x2="242" y2="64" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-press">
+                <polyline points="148,116 140,100 140,86" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <polyline points="166,116 158,100 158,86" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <line x1="124" y1="86" x2="174" y2="86" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <rect x="118" y="74" width="8" height="24" rx="2" fill="var(--acc)"/>
+                <rect x="172" y="74" width="8" height="24" rx="2" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
 
-      const STAND = {
-        head: [150, 44],
-        sh: [148, 58],
-        hip: [148, 108],
-        knee: [150, 138],
-        foot: [150, 168],
-      };
-      const FSTAND = {
-        head: [160, 44],
-        neck: [160, 58],
-        shL: [138, 64],
-        shR: [182, 64],
-        hipL: [148, 112],
-        hipR: [172, 112],
-        knL: [146, 140],
-        knR: [174, 140],
-        ftL: [144, 168],
-        ftR: [176, 168],
-      };
-      const mirrorX = (p) => [320 - p[0], p[1]];
-      const fArms = (elL, hdL) => ({
-        elL,
-        hdL,
-        elR: mirrorX(elL),
-        hdR: mirrorX(hdL),
-      });
+          case "pushup":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Pompes — corps gainé">${defs}${grid}
+              ${glow(128, 146, 14)}
+              <line x1="196" y1="158" x2="206" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <g class="anim-push">
+                <circle cx="86" cy="144" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="98" y1="148" x2="192" y2="156" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <polyline points="126,150 104,160 82,168" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+              </g>
+              <line x1="58" y1="168" x2="78" y2="168" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3"/>
+              ${phases}
+            </svg>`;
 
-      const BENCH = `<rect x="64" y="133" width="196" height="11" rx="5" fill="var(--s3)" stroke="var(--line)" stroke-width="1.5"/>
-        <line x1="90" y1="144" x2="90" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>
-        <line x1="236" y1="144" x2="236" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>`;
-      const RING = (p, r = 11, w = 5) =>
-        `<circle cx="${p[0]}" cy="${p[1]}" r="${r}" fill="none" stroke="var(--acc)" stroke-width="${w}"/><circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="var(--text)"/>`;
-      const DB = (p) =>
-        `<line x1="${p[0] - 9}" y1="${p[1]}" x2="${p[0] + 9}" y2="${p[1]}" stroke="var(--text)" stroke-width="3" stroke-linecap="round"/><rect x="${p[0] - 14}" y="${p[1] - 7}" width="6" height="14" rx="2" fill="var(--acc)"/><rect x="${p[0] + 8}" y="${p[1] - 7}" width="6" height="14" rx="2" fill="var(--acc)"/>`;
-      const BARF = (a, b) =>
-        `<line x1="${a[0] - 16}" y1="${a[1]}" x2="${b[0] + 16}" y2="${b[1]}" stroke="var(--text)" stroke-width="3.5" stroke-linecap="round"/><rect x="${a[0] - 22}" y="${a[1] - 10}" width="7" height="20" rx="2" fill="var(--acc)"/><rect x="${b[0] + 15}" y="${b[1] - 10}" width="7" height="20" rx="2" fill="var(--acc)"/>`;
-      const FLOORMAT = `<rect x="50" y="164" width="230" height="6" rx="3" fill="var(--s3)"/>`;
+          case "press-incline":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Développé incliné — trajectoire haute">${defs}${grid}
+              <line x1="84" y1="150" x2="150" y2="92" stroke="var(--s2)" stroke-width="12" stroke-linecap="round"/>
+              <line x1="110" y1="130" x2="110" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="140" y1="106" x2="140" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <circle cx="158" cy="82" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="90" y1="142" x2="150" y2="90" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="90,142 78,156 82,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(126, 112, 13)}
+              <line x1="178" y1="118" x2="240" y2="58" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-press-inc">
+                <polyline points="132,102 146,80 158,64" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="162" cy="58" r="8" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
 
-      const hasOwn = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
-      const base1 = { head: [92, 118], sh: [114, 121], hip: [168, 121], knee: [210, 122], foot: [222, 164] };
-      const rowBase = { head: [177, 60], sh: [164, 70], hip: [128, 106], knee: [148, 134], foot: [138, 168] };
-      const pullA = {
-        ...FSTAND,
-        head: [160, 54],
-        neck: [160, 68],
-        shL: [138, 72],
-        shR: [182, 72],
-        hipL: [148, 120],
-        hipR: [172, 120],
-        knL: [147, 144],
-        knR: [173, 144],
-        ftL: [150, 166],
-        ftR: [170, 166],
-        ...fArms([128, 44], [120, 16]),
-      };
-      const pullB = {
-        ...pullA,
-        head: [160, 18],
-        neck: [160, 32],
-        shL: [138, 36],
-        shR: [182, 36],
-        hipL: [148, 84],
-        hipR: [172, 84],
-        knL: [147, 108],
-        knR: [173, 108],
-        ftL: [150, 130],
-        ftR: [170, 130],
-        ...fArms([112, 40], [120, 16]),
-      };
-      const BAR_TOP = `<line x1="94" y1="16" x2="226" y2="16" stroke="var(--mut)" stroke-width="5" stroke-linecap="round"/><line x1="94" y1="16" x2="94" y2="4" stroke="var(--line)" stroke-width="4"/><line x1="226" y1="16" x2="226" y2="4" stroke="var(--line)" stroke-width="4"/>`;
-      const standArm = (extra) => ({ ...STAND, ...extra });
+          case "press-decline":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Développé décliné — tête basse">${defs}${grid}
+              <line x1="76" y1="100" x2="156" y2="140" stroke="var(--s2)" stroke-width="12" stroke-linecap="round"/>
+              <line x1="94" y1="112" x2="94" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="140" y1="130" x2="140" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <circle cx="70" cy="96" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="82" y1="104" x2="152" y2="138" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="152,138 176,146 180,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(116, 118, 13)}
+              <line x1="200" y1="130" x2="200" y2="74" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-press">
+                <polyline points="116,122 112,106 112,92" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <line x1="98" y1="92" x2="126" y2="92" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <rect x="94" y="82" width="7" height="20" rx="2" fill="var(--acc)"/>
+                <rect x="123" y="82" width="7" height="20" rx="2" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
 
-      const DEMO_RIGS = {
-        "bench-flat": {
-          segs: SIDE_SEGS,
-          bg: BENCH,
-          A: { ...base1, el: [140, 122], hd: [124, 102] },
-          B: { ...base1, el: [117, 93], hd: [118, 66] },
-          eq: (p) => RING(p.hd),
-          hl: [["dot", "sh", "hip", 0.16, 12, 9, 0, -6]],
-          path: ["hd"],
-        },
-        "bench-incline": {
-          segs: SIDE_SEGS,
-          bg: `<line x1="88" y1="102" x2="154" y2="142" stroke="var(--s3)" stroke-width="14" stroke-linecap="round"/><line x1="154" y1="142" x2="216" y2="142" stroke="var(--s3)" stroke-width="11" stroke-linecap="round"/><line x1="126" y1="132" x2="126" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/><line x1="206" y1="142" x2="206" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>`,
-          A: { head: [94, 92], sh: [108, 102], hip: [160, 130], knee: [204, 126], foot: [216, 164], el: [128, 114], hd: [118, 92] },
-          B: { head: [94, 92], sh: [108, 102], hip: [160, 130], knee: [204, 126], foot: [216, 164], el: [110, 76], hd: [112, 50] },
-          eq: (p) => RING(p.hd),
-          hl: [["dot", "sh", "hip", 0.12, 11, 8, 0, -7]],
-          path: ["hd"],
-        },
-        dips: {
-          segs: SIDE_SEGS,
-          bg: `<line x1="150" y1="96" x2="194" y2="96" stroke="var(--mut)" stroke-width="5" stroke-linecap="round"/><line x1="194" y1="96" x2="194" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/><line x1="176" y1="168" x2="212" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>`,
-          A: { head: [167, 28], sh: [164, 42], hip: [156, 92], knee: [150, 126], foot: [132, 148], el: [166, 69], hd: [168, 96] },
-          B: { head: [163, 52], sh: [160, 66], hip: [152, 116], knee: [148, 146], foot: [128, 160], el: [146, 84], hd: [168, 96] },
-          hl: [
-            ["dot", "sh", "hip", 0.2, 10, 8, 6, 0],
-            ["seg", "sh", "el", 0.2, 0.9, 9],
-          ],
-          hlInv: true,
-        },
-        fly: {
-          segs: FRONT_SEGS,
-          A: { ...FSTAND, ...fArms([114, 76], [92, 82]) },
-          B: { ...FSTAND, ...fArms([122, 84], [151, 90]) },
-          eq: (p) => DB(p.hdL) + DB(p.hdR),
-          hl: [["dot", "shL", "shR", 0.5, 18, 9, 0, 12]],
-          path: ["hdL", "hdR"],
-        },
-        pulldown: {
-          segs: FRONT_SEGS,
-          bg: `<line x1="160" y1="2" x2="160" y2="20" stroke="var(--mut)" stroke-width="2"/><rect x="108" y="118" width="104" height="9" rx="4" fill="var(--s3)" stroke="var(--line)"/>`,
-          A: {
-            ...FSTAND,
-            head: [160, 52],
-            neck: [160, 66],
-            shL: [138, 70],
-            shR: [182, 70],
-            hipL: [148, 128],
-            hipR: [172, 128],
-            knL: [142, 130],
-            knR: [178, 130],
-            ftL: [142, 164],
-            ftR: [178, 164],
-            ...fArms([128, 44], [116, 20]),
-          },
-          B: {
-            ...FSTAND,
-            head: [160, 52],
-            neck: [160, 66],
-            shL: [138, 70],
-            shR: [182, 70],
-            hipL: [148, 128],
-            hipR: [172, 128],
-            knL: [142, 130],
-            knR: [178, 130],
-            ftL: [142, 164],
-            ftR: [178, 164],
-            ...fArms([122, 96], [122, 74]),
-          },
-          eq: (p) =>
-            `<line x1="160" y1="2" x2="${(p.hdL[0] + p.hdR[0]) / 2}" y2="${p.hdL[1]}" stroke="var(--mut)" stroke-width="2"/><line x1="${p.hdL[0] - 6}" y1="${p.hdL[1]}" x2="${p.hdR[0] + 6}" y2="${p.hdR[1]}" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/>`,
-          hl: [
-            ["dot", "shL", "hipL", 0.4, 8, 15, -5, 0],
-            ["dot", "shR", "hipR", 0.4, 8, 15, 5, 0],
-          ],
-          path: ["hdL", "hdR"],
-        },
-        row: {
-          segs: SIDE_SEGS,
-          A: { ...rowBase, el: [168, 96], hd: [170, 122] },
-          B: { ...rowBase, el: [142, 84], hd: [148, 108] },
-          eq: (p) => RING(p.hd, 10, 5),
-          hl: [["seg", "sh", "hip", 0.08, 0.92, 15]],
-          path: ["hd"],
-        },
-        pullover: {
-          segs: SIDE_SEGS,
-          bg: BENCH,
-          A: { ...base1, el: [92, 96], hd: [70, 104] },
-          B: { ...base1, el: [117, 93], hd: [118, 66] },
-          eq: (p) => RING(p.hd, 9, 5),
-          hl: [["seg", "sh", "hip", 0.08, 0.6, 14]],
-          path: ["hd"],
-          hlInv: true,
-        },
-        hinge: {
-          segs: SIDE_SEGS,
-          A: { ...STAND, el: [160, 76], hd: [147, 68] },
-          B: { head: [199, 78], sh: [185, 84], hip: [136, 102], knee: [148, 132], foot: [150, 168], el: [190, 104], hd: [177, 102] },
-          eq: (p) => RING([p.sh[0] - 4, p.sh[1] - 11], 9, 4),
-          hl: [
-            ["seg", "hip", "sh", 0.25, 0.85, 13],
-            ["dot", "hip", "knee", 0.0, 10, 11, -8, -2],
-          ],
-        },
-        shrug: {
-          segs: FRONT_SEGS,
-          A: { ...FSTAND, ...fArms([134, 92], [132, 118]) },
-          B: {
-            ...FSTAND,
-            neck: [160, 52],
-            shL: [138, 52],
-            shR: [182, 52],
-            ...fArms([134, 80], [132, 106]),
-          },
-          eq: (p) => DB(p.hdL) + DB(p.hdR),
-          hl: [
-            ["dot", "neck", "shL", 0.45, 13, 7, 0, -3],
-            ["dot", "neck", "shR", 0.45, 13, 7, 0, -3],
-          ],
-          path: ["hdL", "hdR"],
-        },
-        "overhead-press": {
-          segs: FRONT_SEGS,
-          A: { ...FSTAND, ...fArms([122, 90], [126, 64]) },
-          B: { ...FSTAND, ...fArms([132, 40], [134, 12]) },
-          eq: (p) => BARF(p.hdL, p.hdR),
-          hl: [
-            ["dot", "shL", "shL", 0, 11, 11, -2, 0],
-            ["dot", "shR", "shR", 0, 11, 11, 2, 0],
-          ],
-          path: ["hdL", "hdR"],
-        },
-        "lat-raise": {
-          segs: FRONT_SEGS,
-          A: { ...FSTAND, ...fArms([134, 90], [131, 116]) },
-          B: { ...FSTAND, ...fArms([112, 66], [88, 68]) },
-          eq: (p) => DB(p.hdL) + DB(p.hdR),
-          hl: [
-            ["dot", "shL", "shL", 0, 10, 12, -4, 2],
-            ["dot", "shR", "shR", 0, 10, 12, 4, 2],
-          ],
-          path: ["hdL", "hdR"],
-        },
-        curl: {
-          segs: SIDE_SEGS,
-          A: standArm({ el: [152, 86], hd: [154, 112] }),
-          B: standArm({ el: [152, 86], hd: [168, 64] }),
-          eq: (p) => RING(p.hd, 7, 4),
-          hl: [["seg", "sh", "el", 0.2, 0.85, 11]],
-          path: ["hd"],
-        },
-        "triceps-pushdown": {
-          segs: SIDE_SEGS,
-          bg: `<line x1="196" y1="8" x2="196" y2="168" stroke="var(--s3)" stroke-width="8" stroke-linecap="round"/><circle cx="188" cy="10" r="7" fill="var(--s2)" stroke="var(--line)"/>`,
-          A: standArm({ el: [152, 86], hd: [174, 72] }),
-          B: standArm({ el: [152, 86], hd: [154, 112] }),
-          eq: (p) =>
-            `<line x1="188" y1="10" x2="${p.hd[0]}" y2="${p.hd[1]}" stroke="var(--mut)" stroke-width="2"/>${RING(p.hd, 5, 3)}`,
-          hl: [["seg", "sh", "el", 0.25, 0.95, 10]],
-          path: ["hd"],
-        },
-        "triceps-overhead": {
-          segs: SIDE_SEGS,
-          A: standArm({ el: [154, 34], hd: [136, 46] }),
-          B: standArm({ el: [154, 34], hd: [156, 8] }),
-          eq: (p) => RING(p.hd, 7, 4),
-          hl: [["seg", "sh", "el", 0.3, 1, 10]],
-          path: ["hd"],
-        },
-        wrist: {
-          segs: WRIST_SEGS,
-          bg: `<rect x="82" y="142" width="76" height="10" rx="4" fill="var(--s3)" stroke="var(--line)"/><line x1="92" y1="152" x2="92" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/><line x1="148" y1="152" x2="148" y2="168" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>`,
-          A: { head: [134, 76], sh: [126, 92], hip: [110, 134], knee: [160, 126], foot: [164, 166], el: [146, 118], wr: [176, 116], hd: [196, 134] },
-          B: { head: [134, 76], sh: [126, 92], hip: [110, 134], knee: [160, 126], foot: [164, 166], el: [146, 118], wr: [176, 116], hd: [198, 96] },
-          eq: (p) => RING(p.hd, 8, 4),
-          hl: [["seg", "el", "wr", 0.1, 0.95, 9]],
-          path: ["hd"],
-        },
-        crunch: {
-          segs: SIDE_SEGS,
-          bg: FLOORMAT,
-          A: { head: [100, 152], sh: [118, 154], hip: [168, 156], knee: [196, 124], foot: [222, 160], el: [108, 140], hd: [98, 138] },
-          B: { head: [124, 114], sh: [134, 128], hip: [168, 156], knee: [196, 124], foot: [222, 160], el: [128, 110], hd: [120, 104] },
-          hl: [["seg", "sh", "hip", 0.35, 0.95, 13]],
-        },
-        "leg-raise": {
-          segs: SIDE_SEGS,
-          bg: `<line x1="126" y1="8" x2="174" y2="8" stroke="var(--mut)" stroke-width="5" stroke-linecap="round"/>`,
-          A: { head: [150, 48], sh: [150, 62], hip: [150, 112], knee: [150, 140], foot: [150, 166], el: [150, 35], hd: [150, 8] },
-          B: { head: [150, 48], sh: [150, 62], hip: [146, 114], knee: [190, 108], foot: [230, 102], el: [150, 35], hd: [150, 8] },
-          hl: [
-            ["seg", "sh", "hip", 0.55, 1, 13],
-            ["dot", "hip", "knee", 0, 11, 11, 2, 0],
-          ],
-          path: ["foot"],
-        },
-        rollout: {
-          segs: SIDE_SEGS,
-          bg: FLOORMAT,
-          A: { head: [163, 92], sh: [150, 100], hip: [118, 124], knee: [112, 164], foot: [78, 164], el: [155, 128], hd: [158, 152] },
-          B: { head: [184, 127], sh: [172, 128], hip: [122, 130], knee: [112, 164], foot: [78, 164], el: [190, 144], hd: [206, 154] },
-          eq: (p) => RING([p.hd[0], 155], 12, 4),
-          hl: [["seg", "sh", "hip", 0.2, 0.9, 13]],
-        },
-        woodchopper: {
-          segs: FRONT_SEGS,
-          bg: `<line x1="62" y1="8" x2="62" y2="168" stroke="var(--s3)" stroke-width="8" stroke-linecap="round"/><circle cx="66" cy="12" r="7" fill="var(--s2)" stroke="var(--line)"/>`,
-          A: {
-            ...FSTAND,
-            shL: [136, 62],
-            shR: [182, 66],
-            elL: [126, 44],
-            elR: [152, 48],
-            hdL: [122, 30],
-            hdR: [130, 34],
-          },
-          B: {
-            ...FSTAND,
-            shL: [142, 66],
-            shR: [180, 62],
-            elL: [168, 84],
-            elR: [190, 90],
-            hdL: [194, 108],
-            hdR: [198, 110],
-          },
-          eq: (p) =>
-            `<line x1="66" y1="12" x2="${p.hdL[0]}" y2="${p.hdL[1]}" stroke="var(--mut)" stroke-width="2"/>${RING(lerpPt(p.hdL, p.hdR, 0.5), 5, 3)}`,
-          hl: [
-            ["dot", "shL", "hipL", 0.55, 8, 14, -3, 0],
-            ["dot", "shR", "hipR", 0.55, 8, 14, 3, 0],
-          ],
-          path: ["hdL"],
-        },
-        pallof: {
-          segs: SIDE_SEGS,
-          bg: `<text x="212" y="44" fill="var(--warn)" font-size="10" font-weight="700">⊙ câble latéral</text>`,
-          A: standArm({ el: [152, 86], hd: [172, 78] }),
-          B: standArm({ el: [174, 68], hd: [200, 72] }),
-          eq: (p) =>
-            `<circle cx="${p.hd[0] + 16}" cy="${p.hd[1]}" r="7" fill="none" stroke="var(--warn)" stroke-width="2"/><circle cx="${p.hd[0] + 16}" cy="${p.hd[1]}" r="2.5" fill="var(--warn)"/>`,
-          hl: [["seg", "sh", "hip", 0.3, 0.8, 12]],
-          path: ["hd"],
-        },
-        pullup: {
-          segs: FRONT_SEGS,
-          bg: BAR_TOP,
-          A: pullA,
-          B: pullB,
-          hl: [
-            ["dot", "shL", "hipL", 0.35, 8, 14, -4, 0],
-            ["dot", "shR", "hipR", 0.35, 8, 14, 4, 0],
-          ],
-          path: ["head"],
-        },
-        hang: {
-          segs: FRONT_SEGS,
-          bg: BAR_TOP,
-          A: {
-            ...pullA,
-            head: [160, 58],
-            neck: [160, 72],
-            shL: [138, 78],
-            shR: [182, 78],
-            ...fArms([126, 46], [120, 16]),
-          },
-          B: pullA,
-          hl: [
-            ["dot", "shL", "hipL", 0.35, 8, 14, -4, 0],
-            ["dot", "shR", "hipR", 0.35, 8, 14, 4, 0],
-          ],
-        },
-        plank: {
-          segs: SIDE_SEGS,
-          bg: FLOORMAT,
-          A: { head: [213, 120], sh: [197, 126], hip: [142, 142], knee: [102, 154], foot: [70, 162], el: [198, 156], hd: [226, 160] },
-          B: { head: [213, 117], sh: [197, 123], hip: [142, 136], knee: [102, 150], foot: [70, 162], el: [198, 156], hd: [226, 160] },
-          hl: [["seg", "sh", "hip", 0.1, 0.95, 13]],
-        },
-        pushup: {
-          segs: SIDE_SEGS,
-          bg: FLOORMAT,
-          A: { head: [216, 106], sh: [200, 112], hip: [136, 134], knee: [98, 147], foot: [58, 160], el: [202, 138], hd: [204, 163] },
-          B: { head: [218, 142], sh: [202, 146], hip: [135, 152], knee: [97, 156], foot: [58, 160], el: [180, 156], hd: [204, 163] },
-          hl: [["dot", "sh", "hip", 0.12, 11, 9, 0, -2]],
-        },
-        kickback: {
-          segs: SIDE_SEGS,
-          A: { ...rowBase, el: [140, 76], hd: [142, 102] },
-          B: { ...rowBase, el: [140, 76], hd: [114, 78] },
-          eq: (p) => RING(p.hd, 6, 4),
-          hl: [["seg", "sh", "el", 0.3, 1, 10]],
-          path: ["hd"],
-        },
-        facepull: {
-          segs: SIDE_SEGS,
-          bg: `<line x1="238" y1="8" x2="238" y2="168" stroke="var(--s3)" stroke-width="8" stroke-linecap="round"/><circle cx="238" cy="40" r="6" fill="var(--s2)" stroke="var(--line)"/>`,
-          A: standArm({ el: [172, 58], hd: [198, 52] }),
-          B: standArm({ el: [170, 50], hd: [156, 44] }),
-          eq: (p) =>
-            `<line x1="238" y1="40" x2="${p.hd[0]}" y2="${p.hd[1]}" stroke="var(--mut)" stroke-width="2"/>${RING(p.hd, 5, 3)}`,
-          hl: [["dot", "sh", "hip", 0, 11, 10, -5, -2]],
-          path: ["hd"],
-        },
-      };
+          case "dips-pec":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Dips pectoraux — buste penché">${defs}${grid}
+              <line x1="120" y1="92" x2="120" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="200" y1="92" x2="200" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="108" y1="92" x2="212" y2="92" stroke="var(--mut)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(158, 80, 14)}
+              <g class="anim-dips">
+                <circle cx="158" cy="44" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="158" y1="56" x2="148" y2="100" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <polyline points="148,100 138,138 146,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="148,100 154,140 162,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="150,62 132,86 128,92" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="166,62 184,86 192,92" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="128" cy="92" r="4.5" fill="var(--acc)"/>
+                <circle cx="192" cy="92" r="4.5" fill="var(--acc)"/>
+              </g>
+              <line x1="240" y1="98" x2="240" y2="140" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              ${phases}
+            </svg>`;
 
-      function drawRig(rig, p) {
-        const col = {
-          leg: "var(--c-leg)",
-          torso: "var(--c-torso)",
-          arm: "var(--c-arm)",
-          neck: "var(--c-torso)",
-        };
-        let s = "";
-        rig.segs.forEach((g) => {
-          if (g[0] === "poly") {
-            const pts = g[1].map((n) => p[n].join(",")).join(" ");
-            s += `<polygon points="${pts}" fill="var(--bg)" stroke="var(--bg)" stroke-width="${
-              g[2] + 4
-            }" stroke-linejoin="round"/><polygon points="${pts}" fill="${
-              col.torso
-            }" stroke="${col.torso}" stroke-width="${
-              g[2]
-            }" stroke-linejoin="round"/>`;
-          } else {
-            const a = p[g[0]],
-              b = p[g[1]];
-            if (!a || !b) return;
-            s += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="var(--bg)" stroke-width="${
-              g[2] + 3
-            }" stroke-linecap="round"/><line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${
-              col[g[3]]
-            }" stroke-width="${g[2]}" stroke-linecap="round"/>`;
-          }
-        });
-        if (p.head)
-          s += `<circle cx="${p.head[0]}" cy="${p.head[1]}" r="10.5" fill="var(--c-arm)" stroke="var(--bg)" stroke-width="2.5"/>`;
-        ["hd", "hdL", "hdR"].forEach((k) => {
-          if (p[k])
-            s += `<circle cx="${p[k][0]}" cy="${p[k][1]}" r="4.6" fill="var(--c-arm)" stroke="var(--bg)" stroke-width="1.5"/>`;
-        });
-        return s;
-      }
+          case "dips-tri":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Dips triceps — buste droit">${defs}${grid}
+              <line x1="120" y1="92" x2="120" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="200" y1="92" x2="200" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="108" y1="92" x2="212" y2="92" stroke="var(--mut)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(146, 66, 9)}${glow(174, 66, 9)}
+              <g class="anim-dips">
+                <circle cx="160" cy="44" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="160" y1="56" x2="160" y2="100" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <polyline points="160,100 152,140 150,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="160,100 168,140 170,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="150,60 140,84 134,92" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="170,60 180,84 186,92" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="134" cy="92" r="4.5" fill="var(--acc)"/>
+                <circle cx="186" cy="92" r="4.5" fill="var(--acc)"/>
+              </g>
+              <line x1="240" y1="98" x2="240" y2="140" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              ${phases}
+            </svg>`;
 
-      function hlSvg(rig, p, op) {
-        return (rig.hl || [])
-          .map((h) => {
-            if (!p[h[1]] || !p[h[2]]) return "";
-            if (h[0] === "seg") {
-              const a = lerpPt(p[h[1]], p[h[2]], h[3]),
-                b = lerpPt(p[h[1]], p[h[2]], h[4]);
-              return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="var(--acc)" stroke-width="${h[5]}" stroke-linecap="round" opacity="${op}"/>`;
-            }
-            const c = lerpPt(p[h[1]], p[h[2]], h[3]);
-            return `<ellipse cx="${c[0] + (h[6] || 0)}" cy="${c[1] + (h[7] || 0)}" rx="${h[4]}" ry="${h[5]}" fill="var(--acc)" opacity="${op}"/>`;
-          })
-          .join("");
-      }
+          case "fly":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Écarté — vue de dessus, grand arc">${defs}${grid}
+              <rect x="132" y="78" width="56" height="30" rx="14" fill="var(--s2)" stroke="var(--text)" stroke-width="2.5"/>
+              <circle cx="160" cy="58" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              ${glow(160, 92, 12)}
+              <g class="anim-fly-l" style="transform-origin:134px 92px">
+                <polyline points="134,92 118,64 102,52" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="98" cy="50" r="6" fill="var(--acc)"/>
+              </g>
+              <g class="anim-fly-r" style="transform-origin:186px 92px">
+                <polyline points="186,92 202,64 218,52" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="222" cy="50" r="6" fill="var(--acc)"/>
+              </g>
+              <path d="M 96,54 Q 72,92 96,130" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <path d="M 224,54 Q 248,92 224,130" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              ${phases}
+            </svg>`;
 
-      function demoSvgMarkup(key) {
-        const rig = DEMO_RIGS[key] || DEMO_RIGS.curl;
-        const paths = (rig.path || [])
-          .map((k) => {
-            const a = rig.A[k],
-              b = rig.B[k];
-            if (!a || !b) return "";
-            return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="var(--acc)" stroke-width="1.6" stroke-dasharray="3 4" opacity=".7"/><circle cx="${b[0]}" cy="${b[1]}" r="3" fill="var(--acc)" opacity=".7"/>`;
-          })
-          .join("");
-        return `<svg id="demo-svg" viewBox="0 0 320 190" role="img" aria-label="Démonstration animée du mouvement">
-          <line x1="20" y1="169" x2="300" y2="169" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>
-          <g>${rig.bg || ""}</g>
-          <g opacity=".15">${drawRig(rig, rig.B)}</g>
-          <g>${paths}</g>
-          <g id="dm-body"></g>
-        </svg>`;
-      }
+          case "pulldown":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Tirage vertical / tractions — coudes vers les hanches">${defs}${grid}
+              <line x1="92" y1="26" x2="228" y2="26" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>
+              <line x1="160" y1="26" x2="160" y2="42" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 2"/>
+              <circle cx="160" cy="88" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="100" x2="160" y2="142" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="160,142 142,148 142,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="160,142 178,148 178,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(140, 108, 10)}${glow(180, 108, 10)}
+              <line x1="104" y1="46" x2="104" y2="84" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-pulldown">
+                <line x1="122" y1="44" x2="198" y2="44" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <polyline points="142,96 128,70 124,44" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="178,96 192,70 196,44" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              ${phases}
+            </svg>`;
 
-      let demoAnim = null;
-      function stopDemoAnim() {
-        if (demoAnim) {
-          cancelAnimationFrame(demoAnim.raf);
-          demoAnim = null;
+          case "row":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Rowing — tirage vers la hanche">${defs}${grid}
+              <polyline points="148,122 132,146 130,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="148,122 154,148 158,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="148" y1="122" x2="192" y2="80" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="203" cy="72" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="190" y1="84" x2="238" y2="116" stroke="var(--mut)" stroke-width="3" stroke-dasharray="3 3"/>
+              ${glow(170, 100, 13)}
+              <g class="anim-row">
+                <polyline points="190,84 214,98 240,116" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="244" cy="118" r="9" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "pullover":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Pull-over — grand arc au-dessus de la tête">${defs}${grid}
+              <rect x="72" y="126" width="150" height="12" rx="5" fill="var(--s2)" stroke="var(--line)" stroke-width="2"/>
+              <line x1="92" y1="138" x2="92" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="202" y1="138" x2="202" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <circle cx="96" cy="114" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="110" y1="120" x2="188" y2="120" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="188,120 214,138 218,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(150, 110, 14)}
+              <path d="M 210,62 A 62,62 0 0 1 226,134" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+              <g class="anim-pullover" style="transform-origin:150px 118px">
+                <line x1="150" y1="118" x2="196" y2="84" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="200" cy="80" r="8" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "hinge":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Flexion de hanche — dos plat">${defs}${grid}
+              <line x1="176" y1="54" x2="176" y2="168" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 3"/>
+              <line x1="140" y1="168" x2="144" y2="118" stroke="var(--text)" stroke-width="5" stroke-linecap="round"/>
+              <polyline points="140,118 128,140 126,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(142, 92, 12)}
+              <g class="anim-hinge" style="transform-origin:144px 118px">
+                <line x1="144" y1="118" x2="150" y2="62" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="151" cy="50" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="146" y1="74" x2="160" y2="106" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="162" cy="108" r="8" fill="var(--acc)"/>
+              </g>
+              <path d="M 190,70 A 52,52 0 0 1 166,112" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+              ${phases}
+            </svg>`;
+
+          case "shrug":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Shrugs — haussement vertical des épaules">${defs}${grid}
+              <circle cx="160" cy="56" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="68" x2="160" y2="132" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="152" y1="132" x2="148" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="168" y1="132" x2="172" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(146, 70, 10)}${glow(174, 70, 10)}
+              <line x1="226" y1="84" x2="226" y2="56" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-shrug">
+                <rect x="110" y="70" width="8" height="24" rx="2" fill="var(--acc)"/>
+                <rect x="202" y="70" width="8" height="24" rx="2" fill="var(--acc)"/>
+                <line x1="118" y1="82" x2="202" y2="82" stroke="var(--acc)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="138,82 140,118" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="182,82 180,118" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "y-raise":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Élévations en Y — buste sur banc incliné">${defs}${grid}
+              <line x1="100" y1="150" x2="158" y2="98" stroke="var(--s2)" stroke-width="12" stroke-linecap="round"/>
+              <line x1="118" y1="134" x2="118" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <circle cx="168" cy="92" r="8" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="156" y1="100" x2="108" y2="142" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="108,142 96,156 100,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(140, 96, 12)}
+              <path d="M 96,124 A 42,42 0 0 1 104,72" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+              <g class="anim-lat-l" style="transform-origin:146px 106px">
+                <line x1="146" y1="106" x2="112" y2="84" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="108" cy="82" r="5" fill="var(--acc)"/>
+              </g>
+              <g class="anim-lat-r" style="transform-origin:150px 110px">
+                <line x1="150" y1="110" x2="116" y2="88" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="112" cy="86" r="5" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "face-pull":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Face pull — corde vers le visage">${defs}${grid}
+              <line x1="84" y1="24" x2="84" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="84" y1="40" x2="116" y2="70" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 2"/>
+              <circle cx="176" cy="82" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="176" y1="94" x2="176" y2="140" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="176,140 158,146 158,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="176,140 194,146 194,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(164, 92, 10)}
+              <g class="anim-pull">
+                <polyline points="176,96 148,86 120,74" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="114" cy="72" r="4" fill="var(--acc)"/>
+                <circle cx="110" cy="78" r="4" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "ohp":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Développé militaire — poussée verticale">${defs}${grid}
+              <circle cx="160" cy="58" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="70" x2="160" y2="126" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="152" y1="126" x2="148" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="168" y1="126" x2="172" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(146, 74, 10)}${glow(174, 74, 10)}
+              <line x1="216" y1="120" x2="216" y2="42" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-press">
+                <rect x="110" y="70" width="8" height="24" rx="2" fill="var(--acc)"/>
+                <rect x="202" y="70" width="8" height="24" rx="2" fill="var(--acc)"/>
+                <line x1="118" y1="82" x2="202" y2="82" stroke="var(--acc)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="146,84 134,96 128,82" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="174,84 186,96 192,82" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "arnold":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Développé Arnold — poussée + rotation des poignets">${defs}${grid}
+              <circle cx="160" cy="58" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="70" x2="160" y2="126" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="152" y1="126" x2="148" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="168" y1="126" x2="172" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(146, 74, 10)}${glow(174, 74, 10)}
+              <path d="M 218,56 A 15,15 0 1 1 206,74" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <text x="238" y="40" text-anchor="middle" font-size="9" fill="var(--mut)">rotation des poignets</text>
+              <g class="anim-press">
+                <polyline points="146,84 134,96 128,84" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="174,84 186,96 192,84" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="126" cy="80" r="7" fill="var(--acc)"/>
+                <circle cx="194" cy="80" r="7" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "lat-raise":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Élévations latérales — jusqu'à l'horizontale">${defs}${grid}
+              <circle cx="160" cy="52" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="64" x2="160" y2="128" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="152" y1="128" x2="148" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="168" y1="128" x2="172" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(136, 80, 9)}${glow(184, 80, 9)}
+              <line x1="42" y1="74" x2="118" y2="74" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <line x1="202" y1="74" x2="278" y2="74" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M 122,116 A 46,46 0 0 1 92,76" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <path d="M 198,116 A 46,46 0 0 0 228,76" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <g class="anim-lat-l" style="transform-origin:136px 76px">
+                <line x1="136" y1="76" x2="126" y2="118" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="124" cy="122" r="6" fill="var(--acc)"/>
+              </g>
+              <g class="anim-lat-r" style="transform-origin:184px 76px">
+                <line x1="184" y1="76" x2="194" y2="118" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="196" cy="122" r="6" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "front-raise":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Élévations frontales — bras tendus devant soi">${defs}${grid}
+              <circle cx="158" cy="52" r="10" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="158" y1="64" x2="158" y2="128" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="156" y1="128" x2="152" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="160" y1="128" x2="166" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(160, 76, 10)}
+              <line x1="166" y1="76" x2="250" y2="76" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M 176,122 A 48,48 0 0 0 206,82" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <g class="anim-front" style="transform-origin:160px 76px">
+                <line x1="160" y1="76" x2="162" y2="120" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="162" cy="125" r="6" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "rear-fly":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Oiseau — écarté arrière buste penché">${defs}${grid}
+              <polyline points="150,122 134,146 132,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="150,122 154,148 158,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="150" y1="122" x2="192" y2="82" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="202" cy="74" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              ${glow(183, 86, 10)}
+              <path d="M 200,126 A 32,32 0 0 1 220,102" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <g class="anim-rear-l" style="transform-origin:186px 88px">
+                <line x1="186" y1="88" x2="190" y2="126" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="191" cy="130" r="6" fill="var(--acc)"/>
+              </g>
+              <g class="anim-rear-r" style="transform-origin:176px 94px">
+                <line x1="176" y1="94" x2="180" y2="132" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="181" cy="136" r="6" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "curl":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Curl — bras supérieur immobile">${defs}${grid}
+              <circle cx="150" cy="50" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="150" y1="62" x2="150" y2="124" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="150,124 144,150 142,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="152" y1="68" x2="152" y2="98" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+              ${glow(162, 82, 10)}
+              <path d="M 198,64 A 40,40 0 0 1 196,104" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <g class="anim-curl" style="transform-origin:152px 98px">
+                <line x1="152" y1="98" x2="188" y2="102" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="192" cy="103" r="8" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "skull":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Barre au front — coudes fixes">${defs}${grid}
+              <rect x="72" y="126" width="150" height="12" rx="5" fill="var(--s2)" stroke="var(--line)" stroke-width="2"/>
+              <line x1="92" y1="138" x2="92" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="202" y1="138" x2="202" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <circle cx="96" cy="114" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="110" y1="120" x2="188" y2="120" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="188,120 214,138 218,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="150" y1="118" x2="150" y2="94" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+              ${glow(150, 102, 9)}
+              <path d="M 196,56 Q 160,58 122,84" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+              <g class="anim-skull">
+                <line x1="150" y1="94" x2="150" y2="62" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="150" cy="58" r="7" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "tri-overhead":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Extension triceps au-dessus de la tête">${defs}${grid}
+              <circle cx="150" cy="84" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="150" y1="96" x2="150" y2="142" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="142" y1="142" x2="138" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="158" y1="142" x2="162" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="152" y1="100" x2="152" y2="72" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+              <line x1="152" y1="74" x2="128" y2="94" stroke="var(--mut)" stroke-width="3" stroke-dasharray="3 3"/>
+              ${glow(158, 90, 9)}
+              <path d="M 200,52 A 40,40 0 0 1 204,94" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <g class="anim-tri-up" style="transform-origin:152px 74px">
+                <line x1="152" y1="74" x2="186" y2="72" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="190" cy="72" r="7" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "tri-pushdown":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Extension poulie — coudes collés au buste">${defs}${grid}
+              <line x1="204" y1="20" x2="204" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="204" y1="28" x2="186" y2="86" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 2"/>
+              <circle cx="148" cy="56" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="148" y1="68" x2="148" y2="120" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="140" y1="120" x2="136" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="156" y1="120" x2="160" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="150" y1="72" x2="150" y2="96" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+              ${glow(158, 80, 9)}
+              <path d="M 196,58 A 34,34 0 0 1 158,134" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+              <g class="anim-tri-down" style="transform-origin:150px 96px">
+                <line x1="150" y1="96" x2="184" y2="92" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="188" cy="91" r="6" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "kickback":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Kickback — extension vers l'arrière">${defs}${grid}
+              <polyline points="150,120 134,146 132,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="150,120 154,148 158,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="150" y1="120" x2="194" y2="80" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="204" cy="72" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="188" y1="86" x2="200" y2="102" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+              <line x1="200" y1="102" x2="216" y2="132" stroke="var(--mut)" stroke-width="3" stroke-dasharray="3 3"/>
+              ${glow(194, 92, 9)}
+              <g class="anim-kick" style="transform-origin:200px 102px">
+                <line x1="200" y1="102" x2="228" y2="100" stroke="var(--acc)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="232" cy="99" r="7" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "wrist":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Flexion / extension des poignets">${defs}${grid}
+              <rect x="70" y="116" width="126" height="48" rx="8" fill="var(--s2)" stroke="var(--line)" stroke-width="2"/>
+              <line x1="92" y1="110" x2="184" y2="110" stroke="var(--text)" stroke-width="8" stroke-linecap="round"/>
+              ${glow(150, 104, 10)}
+              <line x1="232" y1="94" x2="232" y2="126" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              <g class="anim-wrist" style="transform-origin:184px 108px">
+                <line x1="184" y1="110" x2="216" y2="110" stroke="var(--acc)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="220" cy="110" r="8" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "farmers":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Farmer's walk — marche poignée ferme">${defs}${grid}
+              <circle cx="160" cy="52" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="64" x2="160" y2="124" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="152" y1="124" x2="148" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="168" y1="124" x2="172" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(128, 96, 9)}${glow(192, 96, 9)}
+              <g class="anim-shrug">
+                <rect x="112" y="118" width="24" height="14" rx="3" fill="var(--acc)"/>
+                <line x1="140" y1="82" x2="124" y2="118" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              <g class="anim-shrug">
+                <rect x="184" y="118" width="24" height="14" rx="3" fill="var(--acc)"/>
+                <line x1="180" y1="82" x2="196" y2="118" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              <line x1="122" y1="180" x2="198" y2="180" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+              ${phases}
+            </svg>`;
+
+          case "hang":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Suspension à la barre fixe">${defs}${grid}
+              <line x1="110" y1="30" x2="210" y2="30" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>
+              ${glow(142, 50, 9)}${glow(178, 50, 9)}
+              <g class="anim-sway">
+                <circle cx="160" cy="64" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="160" y1="76" x2="160" y2="120" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <polyline points="160,120 152,146 150,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="160,120 168,146 170,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="152,80 138,32" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <polyline points="168,80 182,32" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="138" cy="32" r="4.5" fill="var(--acc)"/>
+                <circle cx="182" cy="32" r="4.5" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "crunch":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Crunch — enroulement du buste">${defs}${grid}
+              <polyline points="150,136 194,106 226,164" fill="none" stroke="var(--text)" stroke-width="5" stroke-linecap="round"/>
+              ${glow(138, 128, 12)}
+              <g class="anim-crunch" style="transform-origin:150px 136px">
+                <line x1="150" y1="136" x2="96" y2="134" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="82" cy="130" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <polyline points="120,134 106,118 92,122" fill="none" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "leg-raise":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Relevés de jambes — enroulement du bassin">${defs}${grid}
+              <line x1="110" y1="28" x2="210" y2="28" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="160" cy="62" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="160" y1="74" x2="160" y2="104" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="152,78 138,30" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="168,78 182,30" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="138" cy="30" r="4" fill="var(--acc)"/>
+              <circle cx="182" cy="30" r="4" fill="var(--acc)"/>
+              ${glow(160, 88, 11)}
+              <g class="anim-legraise" style="transform-origin:160px 104px">
+                <line x1="160" y1="104" x2="162" y2="152" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="163" cy="156" r="5" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "rollout":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Roue abdominale / gainage — corps qui s'allonge">${defs}${grid}
+              ${glow(116, 146, 11)}
+              <g class="anim-rollout" style="transform-origin:86px 164px">
+                <line x1="86" y1="164" x2="128" y2="140" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="140" cy="134" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="132" y1="138" x2="166" y2="152" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="172" cy="156" r="9" fill="none" stroke="var(--acc)" stroke-width="3.5"/>
+              </g>
+              <line x1="60" y1="164" x2="84" y2="164" stroke="var(--acc)" stroke-width="2" stroke-dasharray="3 3"/>
+              ${phases}
+            </svg>`;
+
+          case "wipers":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Essuie-glaces — rotation contrôlée des jambes">${defs}${grid}
+              <circle cx="66" cy="148" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="80" y1="150" x2="158" y2="148" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="92" y1="150" x2="56" y2="144" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(158, 140, 12)}
+              <line x1="158" y1="148" x2="112" y2="112" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 3"/>
+              <line x1="158" y1="148" x2="204" y2="112" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 3"/>
+              <g class="anim-wipers" style="transform-origin:158px 148px">
+                <line x1="158" y1="148" x2="158" y2="94" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="158" cy="90" r="5" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "woodchopper":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Woodchopper — rotation diagonale du tronc">${defs}${grid}
+              <line x1="68" y1="24" x2="68" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="68" y1="38" x2="116" y2="58" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 2"/>
+              <polyline points="162,128 142,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="162,128 182,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(152, 114, 10)}
+              <line x1="92" y1="40" x2="206" y2="150" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+              <g class="anim-chop">
+                <circle cx="162" cy="62" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="162" y1="74" x2="162" y2="128" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <polyline points="162,76 136,66 112,58" fill="none" stroke="var(--text)" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="108" cy="56" r="5" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
+
+          case "side-bend":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Flexion latérale — haltère d'un seul côté">${defs}${grid}
+              <line x1="160" y1="40" x2="160" y2="132" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 3"/>
+              <line x1="154" y1="130" x2="150" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="166" y1="130" x2="170" y2="168" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <g class="anim-sidebend" style="transform-origin:160px 128px">
+                <line x1="160" y1="128" x2="160" y2="64" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="160" cy="52" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="162" y1="72" x2="150" y2="110" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="149" cy="114" r="8" fill="var(--acc)"/>
+              </g>
+              ${glow(170, 108, 9)}
+              ${phases}
+            </svg>`;
+
+          case "side-plank":
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Gainage latéral — hanches hautes">${defs}${grid}
+              <line x1="112" y1="168" x2="130" y2="154" stroke="var(--text)" stroke-width="5" stroke-linecap="round"/>
+              ${glow(182, 140, 11)}
+              <g class="anim-sideplank">
+                <line x1="130" y1="154" x2="204" y2="134" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="214" cy="130" r="8" fill="none" stroke="var(--text)" stroke-width="3"/>
+                <line x1="168" y1="144" x2="192" y2="150" stroke="var(--mut)" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              <line x1="230" y1="118" x2="230" y2="146" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3" marker-start="url(#arr)" marker-end="url(#arr)"/>
+              ${phases}
+            </svg>`;
+
+          case "pallof":
+          default:
+            return `<svg viewBox="0 0 320 190" role="img" aria-label="Pallof press — anti-rotation">${defs}${grid}
+              <line x1="68" y1="24" x2="68" y2="168" stroke="var(--line)" stroke-width="4"/>
+              <line x1="68" y1="96" x2="150" y2="96" stroke="var(--mut)" stroke-width="2" stroke-dasharray="3 2"/>
+              <circle cx="168" cy="58" r="9" fill="none" stroke="var(--text)" stroke-width="3"/>
+              <line x1="168" y1="70" x2="168" y2="122" stroke="var(--text)" stroke-width="6" stroke-linecap="round"/>
+              <polyline points="168,122 150,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="168,122 186,168" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+              ${glow(162, 104, 10)}
+              <line x1="248" y1="96" x2="228" y2="96" stroke="var(--acc)" stroke-width="2" marker-end="url(#arr)"/>
+              <g class="anim-pallof" style="transform-origin:160px 96px">
+                <line x1="160" y1="96" x2="214" y2="96" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="218" cy="96" r="7" fill="var(--acc)"/>
+              </g>
+              ${phases}
+            </svg>`;
         }
       }
-      function setDemoCap(meta, ph) {
-        const c = $("#demo-cap");
-        if (!c) return;
-        c.textContent = (ph === 0 ? "▲ " : "▼ ") + meta.ph[ph];
-        c.style.color = ph === 0 ? "var(--acc)" : "var(--warn)";
-      }
-      function initDemoAnim(key, slow, meta) {
-        stopDemoAnim();
-        const rig = DEMO_RIGS[key] || DEMO_RIGS.curl;
-        const body = $("#dm-body");
-        if (!body) return;
-        const st = {
-          raf: 0,
-          t0: performance.now(),
-          paused: false,
-          e: 0,
-          phase: -1,
-          dur: slow ? 5200 : 2600,
-        };
-        demoAnim = st;
-        st.draw = (e) => {
-          const p = lerpPose(rig.A, rig.B, e);
-          const op = 0.3 + 0.6 * (rig.hlInv ? 1 - e : e);
-          body.innerHTML =
-            drawRig(rig, p) + hlSvg(rig, p, op) + (rig.eq ? rig.eq(p, e) : "");
-        };
-        st.cap = (ph) => setDemoCap(meta, ph);
-        const frame = (now) => {
-          if (demoAnim !== st || !document.getElementById("dm-body")) return;
-          if (!st.paused) {
-            const p = ((now - st.t0) % st.dur) / st.dur;
-            const tri = p < 0.5 ? p * 2 : 2 - p * 2;
-            const e = ease(Math.min(1, Math.max(0, (tri - 0.07) / 0.86)));
-            st.e = e;
-            const ph = p < 0.5 ? 0 : 1;
-            if (ph !== st.phase) {
-              st.phase = ph;
-              st.cap(ph);
-            }
-            st.draw(e);
-            const sl = $("#demo-scrub");
-            if (sl) sl.value = Math.round(e * 100);
-            const pr = $("#demo-prog");
-            if (pr) pr.style.width = p * 100 + "%";
-          }
-          st.raf = requestAnimationFrame(frame);
-        };
-        st.draw(0);
-        st.cap(0);
-        st.raf = requestAnimationFrame(frame);
-      }
-
-      const DEMO_META = {
-        default: {
-          zone: [160, 90, 16],
-          ph: ["Phase active · expire", "Retour contrôlé · inspire"],
-          breath: "Expire pendant l'effort, inspire sur le retour.",
-          tempo: "2 s aller · 1 s contraction · 2 s retour",
-          err: [
-            "Élan ou balancement du corps",
-            "Amplitude incomplète",
-            "Charge trop lourde pour rester propre",
-          ],
-        },
-        "bench-flat": {
-          zone: [140, 118, 18],
-          ph: ["Poussée · expire (1 s)", "Descente contrôlée · inspire (2–3 s)"],
-          breath:
-            "Inspire en descendant la charge, expire en poussant. Ne bloque pas longtemps ta respiration.",
-          tempo: "3 s descente · 0 s pause · 1 s poussée",
-          err: [
-            "Coudes à 90° du buste (danger pour les épaules)",
-            "Fessiers qui décollent du banc",
-            "Rebond de la barre sur la poitrine",
-          ],
-        },
-        "bench-incline": {
-          zone: [128, 90, 16],
-          ph: ["Poussée · expire", "Descente vers les clavicules · inspire"],
-          breath: "Inspire à la descente, expire à la poussée.",
-          tempo: "3 s descente · 1 s poussée",
-          err: [
-            "Banc trop incliné (>45°) : tout part dans les épaules",
-            "Coudes trop écartés",
-            "Dos cambré qui décolle du banc",
-          ],
-        },
-        dips: {
-          zone: [158, 70, 18],
-          ph: ["Poussée · remonte, expire", "Descente · étirement, inspire"],
-          breath: "Inspire en descendant, expire en remontant.",
-          tempo: "2–3 s descente · 1 s poussée",
-          err: [
-            "Descendre trop bas, épaules projetées vers l'avant",
-            "Balancer les jambes pour s'aider",
-            "Verrouiller brutalement les coudes en haut",
-          ],
-        },
-        fly: {
-          zone: [160, 92, 18],
-          ph: ["Fermeture · contracte, expire", "Ouverture · étirement, inspire"],
-          breath: "Inspire à l'ouverture, expire à la fermeture.",
-          tempo: "3 s ouverture · 1 s contraction",
-          err: [
-            "Plier puis étendre les coudes (devient un développé)",
-            "Descendre trop bas sur l'étirement",
-            "Charge trop lourde qui casse l'arc de cercle",
-          ],
-        },
-        pulldown: {
-          zone: [160, 102, 18],
-          ph: [
-            "Tirage · coudes vers les hanches, expire",
-            "Remontée contrôlée · étirement, inspire",
-          ],
-          breath: "Expire en tirant, inspire en laissant remonter.",
-          tempo: "1 s tirage · 1 s pause · 3 s remontée",
-          err: [
-            "Tirer avec les mains / les biceps",
-            "Se balancer en arrière pour prendre de l'élan",
-            "Hausser les épaules vers les oreilles",
-          ],
-        },
-        row: {
-          zone: [165, 98, 18],
-          ph: [
-            "Tirage · serre les omoplates, expire",
-            "Retour · étire le dos, inspire",
-          ],
-          breath: "Expire en tirant, inspire sur le retour.",
-          tempo: "1 s tirage · 1 s pause · 2–3 s retour",
-          err: [
-            "Dos qui s'arrondit",
-            "Buste qui se redresse pour tricher",
-            "Tirer avec les bras sans engager les omoplates",
-          ],
-        },
-        pullover: {
-          zone: [150, 112, 18],
-          ph: [
-            "Bras vers les cuisses · dorsaux, expire",
-            "Retour au-dessus de la tête · inspire",
-          ],
-          breath: "Inspire en haut (cage ouverte), expire en ramenant la charge.",
-          tempo: "2 s aller · 1 s contraction · 3 s retour",
-          err: [
-            "Plier les coudes (triceps à la place des dorsaux)",
-            "Cambrer fortement le bas du dos",
-            "Charge trop lourde",
-          ],
-        },
-        hinge: {
-          zone: [145, 96, 16],
-          ph: [
-            "Flexion avant · dos plat, inspire",
-            "Redressement · fessiers + lombaires, expire",
-          ],
-          breath: "Inspire en inclinant, expire en remontant.",
-          tempo: "2 s descente · 1 s remontée",
-          err: [
-            "Dos arrondi",
-            "Hyperextension en haut du mouvement",
-            "Charge excessive sur les lombaires",
-          ],
-        },
-        shrug: {
-          zone: [160, 74, 16],
-          ph: [
-            "Haussement · vers les oreilles, expire",
-            "Descente · relâche complètement, inspire",
-          ],
-          breath: "Expire en montant, inspire en relâchant.",
-          tempo: "1 s montée · 2 s pause en haut · 2 s descente",
-          err: [
-            "Rotation des épaules (inutile et risquée)",
-            "Plier les coudes",
-            "Amplitude trop courte",
-          ],
-        },
-        "overhead-press": {
-          zone: [160, 92, 18],
-          ph: ["Poussée verticale · expire", "Descente contrôlée · inspire"],
-          breath: "Inspire, gaine, expire en poussant.",
-          tempo: "2 s descente · 1 s poussée",
-          err: [
-            "Dos cambré (bassin non verrouillé)",
-            "Barre projetée vers l'avant au lieu de monter droit",
-            "Coudes trop ouverts à 90°",
-          ],
-        },
-        "lat-raise": {
-          zone: [160, 76, 18],
-          ph: [
-            "Élévation · mène avec les coudes, expire",
-            "Descente lente · inspire",
-          ],
-          breath: "Expire en montant, inspire en descendant.",
-          tempo: "1 s montée · 1 s pause · 3 s descente",
-          err: [
-            "Balancer le buste",
-            "Monter au-dessus de l'horizontale (trapèzes)",
-            "Charge trop lourde",
-          ],
-        },
-        curl: {
-          zone: [150, 84, 14],
-          ph: ["Flexion · monte, expire", "Descente lente · inspire"],
-          breath: "Expire en montant, inspire en descendant.",
-          tempo: "1 s montée · 1 s contraction · 3 s descente",
-          err: [
-            "Coudes qui avancent",
-            "Balancer le dos pour monter la charge",
-            "Ne pas redescendre jusqu'à l'extension",
-          ],
-        },
-        "triceps-pushdown": {
-          zone: [152, 82, 14],
-          ph: ["Extension · bras tendus, expire", "Retour à 90° · inspire"],
-          breath: "Expire en poussant, inspire en remontant.",
-          tempo: "1 s extension · 1 s contraction · 2 s retour",
-          err: [
-            "Coudes qui s'écartent ou avancent",
-            "Peser avec le poids du buste",
-            "Retour trop court (pas d'étirement)",
-          ],
-        },
-        "triceps-overhead": {
-          zone: [152, 86, 14],
-          ph: ["Extension · expire", "Flexion · étirement, inspire"],
-          breath: "Inspire en descendant derrière la tête, expire à l'extension.",
-          tempo: "3 s flexion · 1 s extension",
-          err: [
-            "Coudes qui s'ouvrent",
-            "Dos cambré",
-            "Amplitude trop courte",
-          ],
-        },
-        wrist: {
-          zone: [190, 108, 14],
-          ph: ["Contraction du poignet · expire", "Retour lent · inspire"],
-          breath: "Respiration libre et régulière.",
-          tempo: "1 s montée · 2 s descente",
-          err: [
-            "Décoller les avant-bras du support",
-            "Charge trop lourde et amplitude réduite",
-            "Mouvement trop rapide",
-          ],
-        },
-        crunch: {
-          zone: [118, 130, 16],
-          ph: ["Enroulement · expire à fond", "Retour contrôlé · inspire"],
-          breath: "Vide bien les poumons à l'enroulement.",
-          tempo: "1 s enroulement · 1 s contraction · 2 s retour",
-          err: [
-            "Tirer sur la nuque",
-            "Se relever entièrement (fléchisseurs de hanche)",
-            "Aller trop vite",
-          ],
-        },
-        "leg-raise": {
-          zone: [160, 92, 16],
-          ph: ["Montée · enroule le bassin, expire", "Descente lente · inspire"],
-          breath: "Expire en montant, inspire en descendant.",
-          tempo: "1 s montée · 3 s descente",
-          err: [
-            "Balancer le corps",
-            "Ne pas enrouler le bassin en haut",
-            "Laisser les jambes retomber",
-          ],
-        },
-        rollout: {
-          zone: [135, 142, 16],
-          ph: ["Allongement · gaine, inspire", "Retour · abdos, expire"],
-          breath: "Garde le ventre rentré pendant tout le mouvement.",
-          tempo: "3 s aller · 2 s retour",
-          err: [
-            "Bas du dos qui se creuse",
-            "Fessiers qui montent ou descendent",
-            "Aller trop loin trop tôt",
-          ],
-        },
-        woodchopper: {
-          zone: [160, 96, 16],
-          ph: ["Rotation · expire", "Retour contrôlé · inspire"],
-          breath: "Expire pendant la rotation.",
-          tempo: "1 s rotation · 2 s retour",
-          err: [
-            "Tirer avec les bras",
-            "Hanches fixes (pas de pivot)",
-            "Aller trop vite",
-          ],
-        },
-        pallof: {
-          zone: [150, 100, 16],
-          ph: [
-            "Poussée · résiste à la rotation, expire",
-            "Retour · tronc toujours fixe",
-          ],
-          breath: "Respiration calme, ne laisse pas le buste tourner.",
-          tempo: "1 s poussée · 2 s tenue · 1 s retour",
-          err: [
-            "Laisser le buste pivoter vers la poulie",
-            "Hanches qui bougent",
-            "Charge trop lourde",
-          ],
-        },
-      };
-      Object.assign(DEMO_META, {
-        pullup: {
-          zone: [160, 60, 16],
-          ph: ["Traction · menton au-dessus de la barre, expire", "Descente contrôlée · bras tendus, inspire"],
-          breath: "Expire en montant, inspire en descendant sans te relâcher.",
-          tempo: "1 s montée · 1 s pause · 3 s descente",
-          err: ["Se balancer / kipping", "Menton qui n'atteint pas la barre", "Épaules relâchées en bas du mouvement"],
-        },
-        hang: {
-          zone: [160, 60, 16],
-          ph: ["Épaules actives · légèrement abaissées", "Suspension relâchée · à éviter"],
-          breath: "Respire calmement pendant toute la suspension.",
-          tempo: "30 à 60 s de tenue",
-          err: ["Épaules complètement relâchées dans les oreilles", "Balancement", "Lâcher la prise trop tôt sans contrôle"],
-        },
-        plank: {
-          zone: [150, 130, 16],
-          ph: ["Corps aligné · abdos et fessiers contractés", "Respire calmement · ne creuse pas le dos"],
-          breath: "Respiration calme et régulière, sans bloquer.",
-          tempo: "Tenue isométrique 45 à 60 s",
-          err: ["Bas du dos creusé", "Bassin trop haut ou qui s'affaisse", "Retenir sa respiration"],
-        },
-        pushup: {
-          zone: [150, 120, 16],
-          ph: ["Poussée · remonte, expire", "Descente · poitrine près du sol, inspire"],
-          breath: "Inspire en descendant, expire en poussant.",
-          tempo: "2 s descente · 1 s poussée",
-          err: ["Bassin qui s'affaisse", "Coudes à 90° du buste", "Amplitude incomplète"],
-        },
-        kickback: {
-          zone: [150, 76, 14],
-          ph: ["Extension · contracte le triceps, expire", "Retour à 90° · inspire"],
-          breath: "Expire à l'extension, inspire au retour.",
-          tempo: "1 s extension · 1 s contraction · 2 s retour",
-          err: ["Coude qui retombe", "Balancer le buste", "Charge trop lourde"],
-        },
-        facepull: {
-          zone: [150, 58, 14],
-          ph: ["Tirage vers le visage · coudes hauts, expire", "Retour contrôlé · inspire"],
-          breath: "Expire en tirant, inspire en revenant.",
-          tempo: "1 s tirage · 1 s contraction · 2 s retour",
-          err: ["Tirer vers la poitrine au lieu du visage", "Charge trop lourde et buste qui part en arrière", "Coudes trop bas"],
-        },
-      });
-      const SECOND_MUSCLES = {
-        pecs: "Triceps · Épaules (faisceau avant)",
-        dos: "Biceps · Trapèzes · Avant-bras",
-        trapezes: "Rhomboïdes · Avant-bras",
-        epaules: "Triceps · Trapèzes",
-        biceps: "Brachial · Avant-bras",
-        triceps: "Épaules (avant) · Pecs selon l'exercice",
-        avantbras: "Biceps · Poigne",
-        abdos: "Obliques · Fléchisseurs de hanche",
-        obliques: "Abdos · Transverse",
-      };
 
       function openDemoModal(exId, slow = false) {
         const e = EXI[exId];
         if (!e) return;
         const d = DEMOS[exId] || {
-          anim: e.t === "c" ? "bench-flat" : "curl",
+          anim: e.t === "c" ? "press-flat" : "curl",
           setup:
             "Installe-toi de manière stable, dos neutre et épaules engagées avant de saisir la charge.",
           exec: "Exécute le mouvement sur une amplitude complète et contrôlée : 1–2 s sur la phase active, 2–3 s sur le retour.",
           tip: "Privilégie toujours la qualité d'exécution plutôt que l'élan.",
         };
-        const meta = DEMO_META[d.anim] || DEMO_META.default;
-        const pr = prescribe(e, null, 0);
-        const svg = demoSvgMarkup(d.anim);
+        const reps = repsFor(e, S.settings.goal);
         demoModal(`<div class="row between" style="margin-bottom:8px">
           <div class="grow">
             <div class="row wrapx" style="gap:6px;margin-bottom:4px">
@@ -3823,7 +3661,7 @@
         )}</span>
               ${e.part ? `<span class="tag blue">${esc(e.part)}</span>` : ""}
               <span class="tag">${esc(movLabel(e, true))} · ${repsTxt(
-          pr.reps
+          reps
         )} reps</span>
             </div>
             <h3>${esc(e.n)}</h3>
@@ -3835,15 +3673,9 @@
           <span class="demo-phase">${
             slow ? "Ralenti 0.5×" : "Démonstration animée"
           }</span>
-          ${svg}
-          <div id="demo-cap" class="phase-live" aria-live="off"></div>
-          <div class="cycle-bar"><i id="demo-prog" style="animation:none;width:0"></i></div>
-          <div class="row" style="gap:8px;margin-top:8px">
-            <button type="button" class="btn sm" id="demo-playbtn" data-act="demoPlay" style="min-width:92px">⏸ Pause</button>
-            <input type="range" id="demo-scrub" min="0" max="100" value="0" style="min-height:28px;padding:0" aria-label="Position dans le mouvement">
-          </div>
-          <div class="row between" style="margin-top:6px">
-            <span class="tiny mut"><span style="color:var(--acc)">●</span> muscle ciblé · silhouette pâle = position finale · pointillés = trajet</span>
+          ${demoSvg(d.anim)}
+          <div class="row between" style="margin-top:4px">
+            <span class="tiny mut">Trajectoire & amplitude cible</span>
             <button type="button" class="btn sm ghost" style="min-height:28px;padding:2px 8px;font-size:12px" data-act="toggleDemoSlow" data-id="${esc(
               exId
             )}" data-slow="${slow ? "0" : "1"}">
@@ -3852,14 +3684,6 @@
           </div>
         </div>
 
-        <div class="demo-step">
-          <b>Ta prescription</b>
-          <span class="small">${pr.sets} séries × ${repsTxt(
-          pr.reps
-        )} reps · repos ${mmss(pr.rest)} · progression de +${nf(
-          e.inc || 2.5
-        )} kg quand toutes les séries atteignent le haut de la fourchette.</span>
-        </div>
         <div class="demo-step">
           <b>1. Position de départ</b>
           <span class="small">${esc(d.setup)}</span>
@@ -3872,27 +3696,10 @@
           <b>3. Point clé & sécurité</b>
           <span class="small">${esc(d.tip)}</span>
         </div>
-        <div class="demo-step">
-          <b>4. Respiration & tempo</b>
-          <span class="small">${esc(meta.breath)}<br><span class="mut">Tempo conseillé : ${esc(
-          meta.tempo
-        )}</span></span>
-        </div>
-        <div class="demo-step tip">
-          <b>5. Erreurs fréquentes</b>
-          <ul class="small" style="margin:4px 0 0 18px;padding:0">${meta.err
-            .map((x) => `<li>${esc(x)}</li>`)
-            .join("")}</ul>
-        </div>
-        <div class="demo-step">
-          <b>Muscles aussi sollicités</b>
-          <span class="small">${esc(SECOND_MUSCLES[e.m] || "—")}</span>
-        </div>
 
         <div style="margin-top:12px">
           <button class="btn primary block" data-act="closeDemo">Compris</button>
         </div>`);
-        initDemoAnim(d.anim, slow, meta);
       }
 
       /* ============ Paires de 2 muscles principaux par séance ============ */
@@ -3963,12 +3770,6 @@
           short: "Dos/Tri",
           muscles: ["dos", "triceps"],
         },
-      };
-      PAIRS.dosTrap = {
-        key: "dosTrap",
-        name: "Dos & Trapèzes",
-        short: "Dos/Trap",
-        muscles: ["dos", "trapezes"],
       };
       const PAIR_LIST = Object.values(PAIRS);
 
@@ -4068,125 +3869,62 @@
         return Math.max(0, Math.floor(parse(wk).getTime() / (7 * 86400000)));
       }
 
-      /* Paires cohérentes (clés dans l'ordre canonique de MAIN_MUSCLES) */
-      const PREF_PAIRS = {
-        auto: [
-          "pecs-triceps",
-          "dos-biceps",
-          "trapezes-epaules",
-          "pecs-dos",
-          "biceps-triceps",
-          "dos-trapezes",
-          "pecs-epaules",
-        ],
-        synergie: [
-          "pecs-triceps",
-          "dos-biceps",
-          "trapezes-epaules",
-          "dos-trapezes",
-          "epaules-triceps",
-          "pecs-epaules",
-        ],
-        antagoniste: [
-          "pecs-dos",
-          "biceps-triceps",
-          "trapezes-epaules",
-          "dos-epaules",
-          "pecs-biceps",
-          "dos-triceps",
-        ],
-      };
-      /* Muscles qui se sollicitent mutuellement : à ne pas enchaîner sur 2 séances consécutives */
-      const SYNERGY = [
-        ["pecs", "triceps"],
-        ["pecs", "epaules"],
-        ["epaules", "triceps"],
-        ["dos", "biceps"],
-        ["dos", "trapezes"],
-        ["trapezes", "epaules"],
-        ["trapezes", "biceps"],
-      ];
-      const synergic = (a, b) =>
-        SYNERGY.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
-
-      function splitPairs(n, split, prio, wk = null) {
-        const IDX = (m) => MAIN_MUSCLES.indexOf(m);
-        const pk = (a, b) => (IDX(a) < IDX(b) ? [a, b] : [b, a]);
+      function splitKeys(n, split, prio, wk = null) {
+        const seqs = {
+          auto: [
+            "pecsTri",
+            "dosBi",
+            "epTrap",
+            "pecsDos",
+            "biTri",
+            "pecsEp",
+            "dosEp",
+          ],
+          synergie: [
+            "pecsTri",
+            "dosBi",
+            "epTrap",
+            "pecsEp",
+            "biTri",
+            "dosTri",
+            "pecsBi",
+          ],
+          antagoniste: [
+            "pecsDos",
+            "biTri",
+            "epTrap",
+            "pecsEp",
+            "dosEp",
+            "pecsBi",
+            "dosTri",
+          ],
+        };
+        let base = (seqs[split] || seqs.auto).slice();
         const mainPrio = (prio || []).filter((m) => MAIN_MUSCLES.includes(m));
-        const rotN = weekNumberOf(wk) % MAIN_MUSCLES.length;
-        const order = MAIN_MUSCLES.slice(rotN).concat(
-          MAIN_MUSCLES.slice(0, rotN)
+        if (mainPrio.length) {
+          const score = (k) =>
+            PAIRS[k].muscles.reduce(
+              (s, m) => s + (mainPrio.includes(m) ? 10 : 0),
+              0
+            );
+          const allKeys = Object.keys(PAIRS);
+          const ranked = [...new Set([...base, ...allKeys])].sort(
+            (a, b) => score(b) - score(a)
+          );
+          const picked = [];
+          for (let i = 0; i < n; i++) {
+            const cand =
+              ranked.find((k) => !picked.includes(k)) ||
+              ranked[i % ranked.length];
+            picked.push(cand);
+          }
+          return picked;
+        }
+        const offset = wk && n < 5 ? (weekNumberOf(wk) * n) % base.length : 0;
+        return Array.from(
+          { length: n },
+          (_, i) => base[(i + offset) % base.length]
         );
-        const total = 2 * n;
-
-        /* 1) Fréquence hebdo par muscle : un prioritaire passe à 2–3 fois, jamais à chaque séance */
-        let capBase = Math.max(1, Math.min(2, Math.ceil(n / 2)));
-        let capPrio = Math.max(1, Math.min(3, Math.ceil(n / 2)));
-        const caps = (m) => (mainPrio.includes(m) ? capPrio : capBase);
-        while (order.reduce((s, m) => s + caps(m), 0) < total) {
-          capBase++;
-          capPrio++;
-        }
-        const freq = Object.fromEntries(order.map((m) => [m, 0]));
-        for (let k = 0; k < total; k++) {
-          let best = null,
-            bs = -1;
-          order.forEach((m) => {
-            if (freq[m] >= caps(m)) return;
-            const sc = (mainPrio.includes(m) ? 1.5 : 1) / (freq[m] + 1);
-            if (sc > bs + 1e-9) {
-              bs = sc;
-              best = m;
-            }
-          });
-          if (!best) break;
-          freq[best]++;
-        }
-
-        /* 2) Assemblage en séances cohérentes, sans enchaîner les mêmes muscles */
-        const rem = { ...freq };
-        const pref = PREF_PAIRS[split] || PREF_PAIRS.auto;
-        const union = new Set(Object.values(PREF_PAIRS).flat());
-        const out = [];
-        let prev = [];
-        for (let i = 0; i < n; i++) {
-          let best = null,
-            bs = -1e9;
-          for (let x = 0; x < order.length; x++) {
-            for (let y = x + 1; y < order.length; y++) {
-              const a = order[x],
-                b = order[y];
-              if (rem[a] <= 0 || rem[b] <= 0) continue;
-              const [p, q] = pk(a, b);
-              const key = p + "-" + q;
-              let sc = pref.includes(key) ? 10 : union.has(key) ? 3 : -10;
-              sc += 2 * (rem[a] + rem[b]);
-              [a, b].forEach((m) => {
-                if (prev.includes(m)) sc -= 100;
-                prev.forEach((pm) => {
-                  if (synergic(pm, m)) sc -= 4;
-                });
-              });
-              if (sc > bs) {
-                bs = sc;
-                best = [p, q];
-              }
-            }
-          }
-          if (!best) {
-            const left = order.filter((m) => rem[m] > 0);
-            const m1 = left[0] || order[0];
-            const m2 = order
-              .filter((m) => m !== m1)
-              .sort((u, v) => freq[u] - freq[v])[0];
-            freq[m2]++;
-            best = pk(m1, m2);
-          }
-          best.forEach((m) => (rem[m] = Math.max(0, rem[m] - 1)));
-          prev = best;
-          out.push(best);
-        }
-        return out;
       }
 
       function buildFinisherSequence(n, prio, wSeed = 0) {
@@ -4196,46 +3934,23 @@
         const finPrio = (prio || []).filter((m) =>
           FINISHER_MUSCLES.includes(m)
         );
-        /* Un finisseur prioritaire revient au maximum 2 fois / semaine, jamais 2 séances d'affilée */
-        const maxPrio = Math.max(1, Math.min(2, Math.ceil(n / 2)));
-        const counts = {};
-        const out = [];
-        for (let i = 0; i < n; i++) {
-          const prev = out[i - 1];
-          let pick = null;
-          if (finPrio.length && i % 2 === 0) {
-            pick = finPrio.find(
-              (m) => m !== prev && (counts[m] || 0) < maxPrio
-            );
-          }
-          if (!pick) {
-            let cand = baseOrder.filter(
-              (m) =>
-                m !== prev &&
-                !(finPrio.includes(m) && (counts[m] || 0) >= maxPrio)
-            );
-            if (!cand.length) cand = baseOrder.filter((m) => m !== prev);
-            pick = cand.sort(
-              (a, b) =>
-                (counts[a] || 0) - (counts[b] || 0) ||
-                baseOrder.indexOf(a) - baseOrder.indexOf(b)
-            )[0];
-          }
-          out.push(pick);
-          counts[pick] = (counts[pick] || 0) + 1;
+        let pool = baseOrder;
+        if (finPrio.length) {
+          const rest = baseOrder.filter((m) => !finPrio.includes(m));
+          pool = [...finPrio, ...finPrio, ...rest];
         }
-        return out;
+        return Array.from({ length: n }, (_, i) => pool[i % pool.length]);
       }
 
       function buildSlots(n, prio, mins, wk = null) {
-        const pairs = splitPairs(n, S.settings.split, prio, wk);
+        const keys = splitKeys(n, S.settings.split, prio, wk);
         const tp0 = timePlan(mins, S.settings.goal, S.settings.exPerMuscle);
         const wSeed = weekNumberOf(wk);
         const finishers = buildFinisherSequence(n, prio, wSeed);
         const muscleOcc = {};
-        return pairs.map((pair, i) => {
-          const k = pair[0] + "-" + pair[1];
-          let [m1, m2] = pair;
+        return keys.map((k, i) => {
+          const p = PAIRS[k];
+          let [m1, m2] = p.muscles;
           if (
             prio &&
             prio.includes(m2) &&
@@ -4290,6 +4005,25 @@
         obliques: ["rot", "latflex", "antirot"],
       };
 
+      /* Épaules : les 3 faisceaux sont obligatoires à chaque séance */
+      const SHOULDER_HEADS = [
+        { angle: "press", label: "Avant", full: "Faisceau antérieur" },
+        { angle: "lat", label: "Côté", full: "Faisceau latéral" },
+        { angle: "rear", label: "Arrière", full: "Faisceau postérieur" },
+      ];
+      const headOf = (e) =>
+        e && e.m === "epaules"
+          ? SHOULDER_HEADS.find((h) => h.angle === e.angle) || null
+          : null;
+      const missingShoulderHeads = (exs) =>
+        SHOULDER_HEADS.filter(
+          (h) =>
+            !exs.some((x) => {
+              const e = EXI[x.id] || x;
+              return e.m === "epaules" && e.angle === h.angle;
+            })
+        );
+
       function pickForMuscle(m, count, seed = 0) {
         const pool = EX.filter((e) => e.m === m);
         const rot = (a, s) =>
@@ -4297,7 +4031,8 @@
         const rawAngles = ANGLE_ORDER[m] || [
           ...new Set(pool.map((e) => e.angle).filter(Boolean)),
         ];
-        const angles = rot(rawAngles, seed);
+        // Épaules : ordre fixe avant → côté → arrière (seuls les exos tournent)
+        const angles = m === "epaules" ? rawAngles : rot(rawAngles, seed);
         const buckets = angles
           .map((ang) =>
             rot(
@@ -4335,7 +4070,14 @@
           pickForMuscle(m, cnt, seed).forEach((e) => {
             let ex = e;
             const sw = S.swaps[e.id];
-            if (sw && EXI[sw] && EXI[sw].m === m && !seen.has(sw)) ex = EXI[sw];
+            if (
+              sw &&
+              EXI[sw] &&
+              EXI[sw].m === m &&
+              !seen.has(sw) &&
+              (m !== "epaules" || EXI[sw].angle === e.angle)
+            )
+              ex = EXI[sw];
             if (seen.has(ex.id)) return;
             seen.add(ex.id);
             items.push({
@@ -4877,9 +4619,18 @@
               .slice(0, Math.max(targetCnt, started.length));
           } else if (cur.length < targetCnt) {
             const used = new Set(S.active.exercises.map((x) => x.id));
-            const extra = pickForMuscle(m, targetCnt + 2, 0)
-              .filter((e) => !used.has(e.id))
-              .slice(0, targetCnt - cur.length);
+            let extra = pickForMuscle(m, targetCnt + 2, 0).filter(
+              (e) => !used.has(e.id)
+            );
+            if (m === "epaules") {
+              const miss = missingShoulderHeads(cur).map((h) => h.angle);
+              extra = EX.filter(
+                (e) => e.m === "epaules" && miss.includes(e.angle) && !used.has(e.id)
+              ).filter(
+                (e, i, a) => a.findIndex((z) => z.angle === e.angle) === i
+              ).concat(extra.filter((e) => !miss.includes(e.angle)));
+            }
+            extra = extra.slice(0, targetCnt - cur.length);
             extra.forEach((e) =>
               cur.push(buildEx(e, e.id, tp, cur.length, false))
             );
@@ -5034,7 +4785,6 @@
         $("#demo-modal").hidden = false;
       }
       function closeDemoModal() {
-        stopDemoAnim();
         $("#demo-modal").hidden = true;
         $("#demo-sheet").innerHTML = "";
       }
@@ -5665,21 +5415,17 @@
       function renderWorkout() {
         if (S.active) {
           const W = S.active;
-          const retro = !!W.retro;
-          const groups = [];
-          W.exercises.forEach((x, idx) => {
-            let g = groups.find((q) => q.m === x.m);
-            if (!g) {
-              g = { m: x.m, items: [] };
-              groups.push(g);
-            }
-            g.items.push({ x, idx });
-          });
-          groups.sort(
-            (a, b) =>
-              (isFinisherMuscle(a.m) ? 1 : 0) - (isFinisherMuscle(b.m) ? 1 : 0)
-          );
-          const hasFin = groups.some((g) => isFinisherMuscle(g.m));
+          const mainMuscles = (
+            W.muscles && W.muscles.length
+              ? W.muscles
+              : [
+                  ...new Set(
+                    W.exercises
+                      .filter((x) => !isFinisherMuscle(x.m))
+                      .map((x) => x.m)
+                  ),
+                ]
+          ).slice(0, 2);
           const totalSets = totalSetsOf(W.exercises);
           const doneSets = W.exercises.reduce(
             (a, x) => a + x.sets.filter((s) => s.done).length,
@@ -5690,103 +5436,84 @@
             .filter((x) => x.sets.length);
           const remMins = estimateMinutes(remEx);
           const fullEst = estimateMinutes(W.exercises);
-          let mi = 0;
-          const groupsHtml = groups
-            .map((g) => {
-              const fin = isFinisherMuscle(g.m);
-              if (!fin) mi++;
-              return `<div class="mhead ${fin ? "fin" : ""}">
-          <b>${fin ? "Finition · " : mi + ". "}${esc(
-                MFR[g.m] || g.m
-              )} <span class="tiny mut" style="font-family:Inter,sans-serif;text-transform:none;font-weight:500">· ${esc(
-                PROFILE[g.m]?.label || ""
-              )}</span></b>
-          <span class="row" style="gap:6px">
-            <span class="tiny mut">${g.items.length} exo${
-                g.items.length > 1 ? "s" : ""
-              } · ${totalSetsOf(g.items.map((o) => o.x))} séries</span>
-            <button class="btn sm" data-act="chgMuscleModal" data-m="${
-              g.m
-            }" aria-label="Changer de muscle">⇄ Muscle</button>
-          </span>
-        </div>
-        ${g.items.map(({ x, idx }) => renderExCard(x, idx)).join("")}`;
-            })
-            .join("");
+          const finEx = W.exercises
+            .map((x, idx) => ({ x, idx }))
+            .filter((o) => !mainMuscles.includes(o.x.m));
 
           return `<div class="wrap">
       <div class="top">
         <div>
-          <span class="tag ${retro ? "warn" : "acc"}">${
-            retro
-              ? W.editing
-                ? "Modification d'une séance"
-                : "Saisie après coup"
-              : "Séance en cours"
-          }${hasFin ? " · finition" : ""}</span>
+          <span class="tag acc">2 muscles${
+            finEx.length ? " + finition" : ""
+          } · séries adaptées</span>
           <h1 style="margin-top:4px">${esc(W.name)}</h1>
-          <div class="small mut">${
-            retro
-              ? `Séance du <b style="color:var(--text)">${esc(
-                  fmtDay(W.date)
-                )}</b> · `
-              : `Chrono : <b id="elapsed" style="color:var(--text)">${mmss(
-                  (Date.now() - W.startedAt) / 1000
-                )}</b> · `
-          }${doneSets}/${totalSets} séries${
-            retro ? "" : ` · Reste ~${remMins} min`
-          }</div>
+          <div class="small mut">Chrono : <b id="elapsed" style="color:var(--text)">${mmss(
+            (Date.now() - W.startedAt) / 1000
+          )}</b> · ${doneSets}/${totalSets} séries · Reste ~${remMins} min</div>
         </div>
         <button class="btn sm danger" data-act="cancelW">Quitter</button>
       </div>
 
       <div class="timebox" style="margin-top:0">
-        <div class="row between">
-          <span class="tiny mut" style="font-weight:700;text-transform:uppercase">Date de la séance</span>
-          <input type="date" style="max-width:175px" value="${esc(
-            W.date
-          )}" max="${today()}" data-act="wDate" aria-label="Date de la séance">
-        </div>
-        ${
-          retro
-            ? `<p class="hint" style="margin:8px 0 0">Renseigne tes charges et reps (ou « Cocher toutes les séries » puis corrige). Utilise <b>⇄ Muscle</b> si tu as travaillé un autre muscle que prévu.</p>`
-            : `<p class="hint" style="margin:8px 0 0">Tu as oublié de noter une séance passée ? Change simplement la date ici.</p>`
-        }
-      </div>
-
-      ${
-        retro
-          ? ""
-          : `<div class="timebox">
         <div class="row between" style="margin-bottom:6px">
           <span class="tiny mut" style="font-weight:700;text-transform:uppercase">Adapter au temps à la salle (cible : ${
             W.targetDur || S.settings.duration
           } min · total ~${fullEst} min)</span>
         </div>
         ${durationSelector(W.targetDur || S.settings.duration, "adaptW")}
-      </div>`
-      }
-
-      ${groupsHtml}
-
-      <div class="row" style="margin:12px 0;flex-wrap:wrap">
-        <button class="btn grow" data-act="addExModal" data-m="${
-          hasFin ? groups.find((g) => isFinisherMuscle(g.m)).m : "abdos"
-        }">+ Ajouter un exercice</button>
-        ${
-          retro
-            ? `<button class="btn grow" data-act="checkAll">✓ Cocher toutes les séries</button>`
-            : ""
-        }
       </div>
 
-      <button class="btn primary block" data-act="finishW">${
-        retro
-          ? W.editing
-            ? "Enregistrer les modifications"
-            : "Enregistrer la séance du " + fmtShort(W.date)
-          : "Terminer et enregistrer la séance"
-      }</button>
+      ${mainMuscles
+        .map((m, mi) => {
+          const mEx = W.exercises
+            .map((x, idx) => ({ x, idx }))
+            .filter((o) => o.x.m === m);
+          if (!mEx.length) return "";
+          return `<div class="mhead">
+          <b>${mi + 1}. ${esc(
+            MFR[m] || m
+          )} <span class="tiny mut" style="font-family:Inter,sans-serif;text-transform:none;font-weight:500">· ${esc(
+            PROFILE[m]?.label || ""
+          )}</span></b>
+          <span class="tiny mut">${mEx.length} exo${
+            mEx.length > 1 ? "s" : ""
+          } · ${totalSetsOf(mEx.map((o) => o.x))} séries</span>
+        </div>
+        ${
+          m === "epaules"
+            ? `<div class="row wrapx" style="gap:6px;margin:-2px 0 8px">${SHOULDER_HEADS.map(
+                (h) => {
+                  const ok = mEx.some((o) => (EXI[o.x.id] || {}).angle === h.angle);
+                  return `<span class="tag ${ok ? "ok" : "bad"}">${ok ? "✓" : "✗"} ${h.label}</span>`;
+                }
+              ).join("")}</div>`
+            : ""
+        }
+        ${mEx.map(({ x, idx }) => renderExCard(x, idx)).join("")}`;
+        })
+        .join("")}
+
+      ${
+        finEx.length
+          ? `<div class="mhead fin">
+          <b>Finition · Fin de séance <span class="tiny mut" style="font-family:Inter,sans-serif;text-transform:none;font-weight:500">· ${[
+            ...new Set(finEx.map((o) => MFR[o.x.m] || o.x.m)),
+          ].join(", ")}</span></b>
+          <span class="tiny mut">${finEx.length} exo${
+              finEx.length > 1 ? "s" : ""
+            } · ${totalSetsOf(finEx.map((o) => o.x))} séries</span>
+        </div>
+        ${finEx.map(({ x, idx }) => renderExCard(x, idx)).join("")}`
+          : ""
+      }
+
+      <div class="row" style="margin:12px 0">
+        <button class="btn block" data-act="addExModal" data-m="${
+          finEx.length ? finEx[0].x.m : "abdos"
+        }">+ Ajouter un exercice (ou finition)</button>
+      </div>
+
+      <button class="btn primary block" data-act="finishW">Terminer et enregistrer la séance</button>
     </div>`;
         }
 
@@ -6138,7 +5865,7 @@
                 )
                 .join("")}
             </table>
-            <div class="row" style="justify-content:flex-end;gap:8px;margin-top:8px"><button class="btn sm" data-act="editLog" data-id="${l.id}">Modifier</button>
+            <div style="text-align:right;margin-top:8px">
               <button class="btn sm danger" data-act="delLog" data-id="${
                 l.id
               }">Supprimer</button>
@@ -6278,7 +6005,7 @@
 
     <div class="card">
       <h2 style="margin-bottom:4px">Temps & Répartition des exercices</h2>
-      <p class="small mut">Chaque séance combine <b>2 muscles principaux</b> (2–3 exos × 3–4 séries pour pecs/dos, 2 exos × 4 séries pour épaules/trapèzes/biceps/triceps) + <b>1 exercice de finition (3–4 séries)</b> en addition à la fin de l'entraînement pour les <b>abdos, avant-bras ou obliques</b>.</p>
+      <p class="small mut">Chaque séance combine <b>2 muscles principaux</b> (3 exos × 4 séries pour les épaules, 2 exos × 4 séries pour trapèzes/biceps/triceps, 2–3 exos × 3–4 séries pour pecs/dos) + <b>1 exercice de finition (3–4 séries)</b> en addition à la fin de l'entraînement pour les <b>abdos, avant-bras ou obliques</b>.</p>
 
       <label class="l">Temps par défaut à la salle</label>
       ${durationSelector(st.duration, "setDur")}
@@ -6296,7 +6023,7 @@
           st.exPerMuscle === "auto",
           "setExMode",
           { v: "auto" },
-          "Auto (3 gros / 2×4 petits)"
+          "Auto (3 gros & épaules / 2×4 petits)"
         )}
         ${chip(
           st.exPerMuscle === "2",
@@ -6339,7 +6066,6 @@
       </div>
 
       <label class="l">Muscles haut du corps prioritaires</label>
-      <p class="hint" style="margin:0 0 8px">Un muscle prioritaire est travaillé 2 à 3 fois par semaine, jamais à chaque séance ni deux jours de suite.</p>
       <div class="chips">${MUSCLES.map((m) =>
         chip(st.priority.includes(m), "setPrio", { m }, MFR[m])
       ).join("")}</div>
@@ -6404,7 +6130,7 @@
           inf.logs.forEach((l) => {
             body += `<div class="card">
         <span class="tag ok">Séance terminée</span>
-        <div class="row between"><h3 style="margin-top:6px">${esc(l.name)}</h3><button class="btn sm" data-act="editLog" data-id="${l.id}">Modifier</button></div>
+        <h3 style="margin-top:6px">${esc(l.name)}</h3>
         <p class="small mut">${l.exercises
           .map((x) => `${x.name} (${x.sets.length}×)`)
           .join(" · ")}</p>
@@ -6485,13 +6211,6 @@
     </div>`;
         }
 
-        if (d <= today() && !inf.blocked) {
-          body += `<label class="l">J'ai oublié de noter une séance ce jour-là</label>
-    <p class="tiny mut" style="margin:0 0 6px">Choisis les 2 muscles travaillés, puis saisis charges et reps. Tu pourras encore changer de muscle ensuite.</p>
-    <div class="chips">${PAIR_LIST.map((p) =>
-      chip(false, "retroPair", { d, m1: p.muscles[0], m2: p.muscles[1] }, p.name)
-    ).join("")}</div>`;
-        }
         body += `<div class="row" style="margin-top:14px">
     <button class="btn grow ${
       inf.blocked ? "primary" : "danger"
@@ -6504,12 +6223,25 @@
 
       function openSwapModal(curId, origId, activeEi = null) {
         const cur = EXI[curId] || EX[0];
-        const sameM = EX.filter((e) => e.m === cur.m && e.id !== curId);
+        const head = headOf(cur);
+        const sameM = EX.filter(
+          (e) =>
+            e.m === cur.m &&
+            e.id !== curId &&
+            (!head || e.angle === cur.angle)
+        );
         modal(`<div class="row between" style="margin-bottom:8px">
-    <h3>Remplacer (${esc(MFR[cur.m])})</h3>
+    <h3>Remplacer (${esc(head ? `Épaules · ${head.label}` : MFR[cur.m])})</h3>
     <button class="btn sm ghost" data-act="close">✕</button>
   </div>
   <p class="small mut">Exercice actuel : <b>${esc(cur.n)}</b></p>
+  ${
+    head
+      ? `<p class="tiny mut">Seuls les exercices du même faisceau (${esc(
+          head.full
+        )}) sont proposés, pour garder avant + côté + arrière dans la séance.</p>`
+      : ""
+  }
   <div>
     ${sameM
       .map(
@@ -6621,15 +6353,6 @@
         }
         if (act === "demoModal") {
           openDemoModal(el.dataset.id, false);
-          return;
-        }
-        if (act === "demoPlay") {
-          if (demoAnim) {
-            demoAnim.paused = !demoAnim.paused;
-            if (!demoAnim.paused)
-              demoAnim.t0 = performance.now() - (demoAnim.e / 2) * demoAnim.dur;
-            el.textContent = demoAnim.paused ? "▶ Lecture" : "⏸ Pause";
-          }
           return;
         }
         if (act === "toggleDemoSlow") {
@@ -6844,171 +6567,11 @@
           st.done = !st.done;
           if (st.done) {
             if (!st.r) st.r = String(ex.reps[0]);
-            if (!S.active.retro)
-              startTimer(
+            startTimer(
               ex.rest,
               `${ex.name} — Série ${si + 1}/${ex.sets.length}`
             );
           }
-          save();
-          render();
-          return;
-        }
-        /* Changer de muscle pendant la séance */
-        if (act === "chgMuscleModal") {
-          if (!S.active) return;
-          const old = el.dataset.m;
-          const present = new Set(S.active.exercises.map((x) => x.m));
-          const opt = (list) =>
-            list
-              .filter((m) => m !== old && !present.has(m))
-              .map((m) => chip(false, "doChgMuscle", { old, nw: m }, MFR[m]))
-              .join("");
-          modal(`<div class="row between" style="margin-bottom:8px">
-            <h3>Changer ${esc(MFR[old] || old)}</h3>
-            <button class="btn sm ghost" data-act="close">✕</button>
-          </div>
-          <p class="small mut">Les exercices pas encore commencés sont remplacés par ceux du nouveau muscle. Les séries déjà validées sont conservées.</p>
-          <div class="tiny mut" style="margin:10px 0 4px;font-weight:600">MUSCLES PRINCIPAUX</div>
-          <div class="chips">${opt(MAIN_MUSCLES)}</div>
-          <div class="tiny mut" style="margin:10px 0 4px;font-weight:600">FINITION</div>
-          <div class="chips">${opt(FINISHER_MUSCLES)}</div>`);
-          return;
-        }
-        if (act === "doChgMuscle") {
-          const W = S.active,
-            old = el.dataset.old,
-            nw = el.dataset.nw;
-          if (!W || !PROFILE[nw]) return;
-          const mins = W.targetDur || S.settings.duration;
-          const mains = (W.muscles || []).map((m) => (m === old ? nw : m));
-          const tp = timePlan(
-            mins,
-            S.settings.goal,
-            S.settings.exPerMuscle,
-            [mains[0], mains[1]],
-            null
-          );
-          const cnt = exCountFor(nw, mins, S.settings.exPerMuscle);
-          const fresh = pickForMuscle(nw, cnt, weekNumberOf(W.date)).map(
-            (e, i) => buildEx(e, e.id, tp, i, isFinisherMuscle(nw))
-          );
-          const out = [];
-          let inserted = false;
-          W.exercises.forEach((x) => {
-            if (x.m === old && !x.sets.some((s) => s.done)) {
-              if (!inserted) {
-                out.push(...fresh);
-                inserted = true;
-              }
-              return;
-            }
-            out.push(x);
-          });
-          if (!inserted) out.push(...fresh);
-          W.exercises = out;
-          if (W.muscles) W.muscles = mains;
-          if (isFinisherMuscle(old) && W.finisher) W.finisher = nw;
-          const mainNames = [
-            ...new Set(
-              out.filter((x) => !isFinisherMuscle(x.m)).map((x) => x.m)
-            ),
-          ];
-          if (mainNames.length)
-            W.name = mainNames.map((m) => MFR[m]).join(" & ");
-          save();
-          closeModal();
-          toast(`${MFR[old]} → ${MFR[nw]}`);
-          render();
-          return;
-        }
-
-        /* Saisie après coup / modification d'une séance passée */
-        if (act === "retroPair") {
-          if (S.active) {
-            toast("Termine ou quitte d'abord la séance en cours");
-            return;
-          }
-          const d = el.dataset.d,
-            m1 = el.dataset.m1,
-            m2 = el.dataset.m2;
-          closeModal();
-          startCustomPair(m1, m2, S.dayDur[d] || S.settings.duration, d, wkOf(d));
-          if (S.active) {
-            const P = planWeek(wkOf(d));
-            const sl = P.slots.find(
-              (s) =>
-                !S.logs.some((l) => l.weekKey === P.wk && l.slot === s.idx) &&
-                s.muscles.includes(m1) &&
-                s.muscles.includes(m2)
-            );
-            S.active.slot = sl ? sl.idx : null;
-            S.active.retro = true;
-            save();
-            render();
-          }
-          return;
-        }
-        if (act === "editLog") {
-          if (S.active) {
-            toast("Termine ou quitte d'abord la séance en cours");
-            return;
-          }
-          const l = S.logs.find((x) => x.id === el.dataset.id);
-          if (!l) return;
-          S.active = {
-            id: l.id,
-            date: l.date,
-            weekKey: l.weekKey,
-            slot: l.slot ?? null,
-            name: l.name,
-            muscles: l.muscles || [],
-            finisher: null,
-            targetDur: S.settings.duration,
-            startedAt: Date.now(),
-            retro: true,
-            editing: true,
-            durationMin: l.durationMin || null,
-            exercises: l.exercises.map((x) => {
-              const meta = EXI[x.id];
-              return {
-                id: x.id,
-                orig: x.orig || x.id,
-                name: x.name,
-                m: x.m,
-                t: meta ? meta.t : "c",
-                bw: !!(meta && meta.bw),
-                inc: (meta && meta.inc) || 2.5,
-                rank: 0,
-                isFinisher: isFinisherMuscle(x.m),
-                reps: repsFor(meta || { t: "c" }, S.settings.goal),
-                rest: 90,
-                suggest: null,
-                sets: x.sets.map((s) => ({
-                  w: String(s.w),
-                  r: String(s.r),
-                  done: true,
-                })),
-              };
-            }),
-          };
-          save();
-          closeModal();
-          ui.tab = "workout";
-          render();
-          window.scrollTo(0, 0);
-          return;
-        }
-        if (act === "checkAll") {
-          if (!S.active) return;
-          S.active.exercises.forEach((x) =>
-            x.sets.forEach((s) => {
-              if (!s.done) {
-                s.done = true;
-                if (!s.r) s.r = String(x.reps[0]);
-              }
-            })
-          );
           save();
           render();
           return;
@@ -7059,7 +6622,19 @@
         }
         if (act === "remActiveEx") {
           const ei = Number(el.dataset.ei);
+          const removed = S.active.exercises[ei];
           S.active.exercises.splice(ei, 1);
+          if (removed && removed.m === "epaules") {
+            const miss = missingShoulderHeads(
+              S.active.exercises.filter((x) => x.m === "epaules")
+            );
+            if (miss.length)
+              toast(
+                `Attention : faisceau ${miss
+                  .map((h) => h.label.toLowerCase())
+                  .join(" + ")} des épaules plus travaillé`
+              );
+          }
           save();
           render();
           return;
@@ -7115,24 +6690,17 @@
             toast("Valide au moins une série avant de terminer");
             return;
           }
-          const durationMin = W.retro
-            ? W.durationMin || null
-            : Math.max(1, Math.round((Date.now() - W.startedAt) / 60000));
-          const mainsDone = [
-            ...new Set(
-              clean.filter((x) => !isFinisherMuscle(x.m)).map((x) => x.m)
-            ),
-          ];
-          if (W.editing) S.logs = S.logs.filter((l) => l.id !== W.id);
+          const durationMin = Math.max(
+            1,
+            Math.round((Date.now() - W.startedAt) / 60000)
+          );
           S.logs.push({
             id: W.id,
             date: W.date,
             weekKey: W.weekKey,
             slot: W.slot,
-            name: mainsDone.length
-              ? mainsDone.map((m) => MFR[m]).join(" & ")
-              : W.name,
-            muscles: mainsDone.length ? mainsDone.slice(0, 2) : W.muscles,
+            name: W.name,
+            muscles: W.muscles,
             durationMin,
             exercises: clean,
           });
@@ -7371,16 +6939,6 @@
 
       document.addEventListener("input", (e) => {
         const el = e.target;
-        if (el.id === "demo-scrub" && demoAnim) {
-          demoAnim.paused = true;
-          const v = Number(el.value) / 100;
-          demoAnim.e = v;
-          demoAnim.draw(v);
-          demoAnim.cap(v < 0.5 ? 0 : 1);
-          const b = $("#demo-playbtn");
-          if (b) b.textContent = "▶ Lecture";
-          return;
-        }
         if (el.dataset && el.dataset.set && S.active) {
           const ei = Number(el.dataset.ei),
             si = Number(el.dataset.si);
@@ -7394,22 +6952,6 @@
 
       document.addEventListener("change", (e) => {
         const el = e.target;
-        if (el.dataset && el.dataset.act === "wDate" && S.active && el.value) {
-          const nd = el.value;
-          if (nd > today()) {
-            toast("Impossible de choisir une date future");
-            render();
-            return;
-          }
-          const nwk = wkOf(nd);
-          if (nwk !== S.active.weekKey) S.active.slot = null;
-          S.active.date = nd;
-          S.active.weekKey = nwk;
-          S.active.retro = S.active.retro || nd < today();
-          save();
-          render();
-          return;
-        }
         if (el.dataset && el.dataset.act === "progEx") {
           ui.progEx = el.value;
           render();
